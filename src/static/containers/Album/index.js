@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router';
 import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
 // import logoImage from './images/react-logo.png';
 
 class AlbumView extends React.Component {

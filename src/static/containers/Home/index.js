@@ -38,6 +38,7 @@ class HomeView extends React.Component {
                         }
                     </div>
                 </div>
+                <h4>INSIDE HOME CONTAINER - LIST ALBUMS HERE?</h4>
             </div>
         );
     }
