@@ -1,5 +1,5 @@
 {
-  "name": "django-react-redux-jwt-base",
+  "name": "Pixpy",
   "version": "1.0.0",
   "description": "Django, React, Redux, and JWT!",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/seedstarsdev/django-react-redux-jwt-base.git"
+    "url": "git+https://github.com/JoyJing1/Pixpy"
   },
   "author": "Luis Rodrigues <luis.rodrigues@seedstarslabs.com>",
   "license": "MIT",
