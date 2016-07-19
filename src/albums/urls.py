@@ -1,10 +1,26 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
+from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token
 
-from . import views
+from django.views.decorators.csrf import csrf_exempt
 
-app_name = 'albums'
+from albums import views
+
+router = routers.DefaultRouter()
+router.register(r'albums', views.AlbumViewSet)
+
+
+# app_name = 'albums'
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^', include(router.urls)),
+    url(r'^api-token-auth/', csrf_exempt(obtain_jwt_token))
+
+
+
+    # url(r'^api-token-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    # url(r'^$', views.IndexView.as_view(), name='index'),
+    # ex: /albums/
+    # url(r'^albums/$', views.IndexView.as_view(), name='index'),
     # ex: /albums/5/
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
+    # url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
 ]

@@ -9,7 +9,7 @@ export default(
         <IndexRoute component={HomeView}/>
         <Route path="login" component={LoginView}/>
         <Route path="protected" component={requireAuthentication(ProtectedView)}/>
-        <Route path="albums" component={requireAuthentication(AlbumView)}/>
+        <Route path="albums" component={AlbumView}/>
         <Route path="*" component={NotFoundView}/>
     </Route>
 );

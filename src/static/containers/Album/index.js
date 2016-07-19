@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // import logoImage from './images/react-logo.png';
+import { dataFetchAlbums } from '../../actions/data'
 
 class AlbumView extends React.Component {
 
@@ -11,6 +12,16 @@ class AlbumView extends React.Component {
         albums: React.PropTypes.array
     };
 
+    componentWillMount() {
+        // const token = this.props.token;
+        // this.props.actions.dataFetchProtectedData(token);
+        // debugger;
+        // this.props.route.path === "albums"
+        // debugger;
+        console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
+        console.log(dataFetchAlbums);
+        dataFetchAlbums();
+    }
 
     // const mapDispatchToProps = (dispatch) => {
     //   return {
@@ -27,7 +38,7 @@ class AlbumView extends React.Component {
     render() {
         return (
             <div className="container">
-                <h3>This is my AlbumView</h3>
+                <h3>This is my containers/AlbumView</h3>
             </div>
         );
     }
@@ -36,7 +47,7 @@ class AlbumView extends React.Component {
 const mapStateToProps = (state) => {
   console.log("mapStateToProps in Album/index.js");
   console.log(state);
-  
+
   return {
       statusText: state.auth.statusText,
       albums: state.albums

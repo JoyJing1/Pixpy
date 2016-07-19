@@ -31,13 +31,15 @@ export function dataReceiveAlbums(data) {
     };
 }
 
-export function dataFetchAlbums() {
+export function dataFetchAlbumsRequest() {
     return {
         type: DATA_FETCH_ALBUMS
     };
 }
 
 export function dataFetchProtectedData(token) {
+    console.log('actions/data.js token:');
+    console.log(token);
     return (dispatch, state) => {
         dispatch(dataFetchProtectedDataRequest());
         return fetch(`${SERVER_URL}/api/v1/getdata/`, {
@@ -61,14 +63,20 @@ export function dataFetchProtectedData(token) {
     };
 }
 
-export function dataFetchAlbums(token) {
+// Check that this works
+// Authorization: `JWT ${token}`
+export function dataFetchAlbums() {
+    console.log("static/actions/data.js dataFetchAlbums()");
     return (dispatch, state) => {
-        dispatch(dataFetchAlbums());
+        console.log('about to run dispatch(dataFetchAlbumsRequest()); in static/actions/data.js');
+        console.log(dispatch);
+        console.log(state);
+
+        dispatch(dataFetchAlbumsRequest());
         return fetch(`${SERVER_URL}/api/v1/getalbums/`, {
             credentials: 'include',
             headers: {
-                Accept: 'application/json',
-                Authorization: `JWT ${token}`
+                Accept: 'application/json'
             }
         })
             .then(checkHttpStatus)
