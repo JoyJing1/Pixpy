@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../../actions/data';
+// import pdb; pdb.set_trace()
 
 import './style.scss';
 
@@ -21,7 +22,7 @@ class ProtectedView extends React.Component {
     componentWillMount() {
         const token = this.props.token;
         this.props.actions.dataFetchProtectedData(token);
-        this.props.actions.dataFetchAlbums(token);
+        // this.props.actions.dataFetchAlbums(token);
     }
 
     render() {
@@ -43,6 +44,8 @@ class ProtectedView extends React.Component {
                                     <div className="protected__protected-data">
                                         Data from server<br/>
                                         <b>{this.props.data}</b>
+                                        <h2>THIS IS YOUR TOKEN</h2>
+                                        <h2>{this.props.token}</h2>
                                     </div>
                                 </div>
                             </div>

@@ -11,26 +11,35 @@ from albums.serializers import AlbumSerializer
 
 from .models import Album
 
+# import pdb
+
 # def index(request):
 #     queryset = Album.objects.all()
 #     serializer_class = AlbumSerializer
 
 class AlbumViewSet(viewsets.ModelViewSet):
-    queryset = Album.objects.all()
-    serializer_class = AlbumSerializer
+    # pdb.set_trace()
+    return HttpResponse(simplejson.dumps({'function': 'AlbumViewSet'}), mimetype='application/json')
+    # queryset = Album.objects.all()
+    # serializer_class = AlbumSerializer
 
+    # return Response({'function': 'AlbumViewSet'})
 
 
 class AlbumDataView(GenericAPIView):
+    # pdb.set_trace()
     authentication_classes = (JSONWebTokenAuthentication,)
 
-    def get(self, request):
-        albums = get_list_or_404(Album)
-        data = {
-        'albums': albums
-        }
-
-        return Response(data, status=status.HTTP_200_OK)
+    return HttpResponse(simplejson.dumps({'function': 'AlbumDataView'}), mimetype='application/json')
+    # return Response({'function': 'AlbumDataView'})
+    #
+    # def get(self, request):
+    #     albums = get_list_or_404(Album)
+    #     data = {
+    #     'albums': albums
+    #     }
+    #
+    #     return Response(data, status=status.HTTP_200_OK)
 
     # albums = get_list_or_404(Album)
     # return HttpResponse(simplejson.dumps(albums), mimetype='application/json')
