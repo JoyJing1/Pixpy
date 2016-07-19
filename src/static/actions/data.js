@@ -22,6 +22,21 @@ export function dataFetchProtectedDataRequest() {
     };
 }
 
+export function dataReceiveAlbums(data) {
+    return {
+        type: DATA_RECEIVE_ALBUMS,
+        payload: {
+            data
+        }
+    };
+}
+
+export function dataFetchAlbums() {
+    return {
+        type: DATA_FETCH_ALBUMS
+    };
+}
+
 export function dataFetchProtectedData(token) {
     return (dispatch, state) => {
         dispatch(dataFetchProtectedDataRequest());
@@ -36,6 +51,30 @@ export function dataFetchProtectedData(token) {
             .then(parseJSON)
             .then(response => {
                 dispatch(dataReceiveProtectedData(response.data));
+            })
+            .catch(error => {
+                if (error.response.status === 401) {
+                    dispatch(authLoginUserFailure(error));
+                    dispatch(push('/login'));
+                }
+            });
+    };
+}
+
+export function dataFetchAlbums(token) {
+    return (dispatch, state) => {
+        dispatch(dataFetchAlbums());
+        return fetch(`${SERVER_URL}/api/v1/getalbums/`, {
+            credentials: 'include',
+            headers: {
+                Accept: 'application/json',
+                Authorization: `JWT ${token}`
+            }
+        })
+            .then(checkHttpStatus)
+            .then(parseJSON)
+            .then(response => {
+                dispatch(dataReceiveAlbums(response.albums));
             })
             .catch(error => {
                 if (error.response.status === 401) {

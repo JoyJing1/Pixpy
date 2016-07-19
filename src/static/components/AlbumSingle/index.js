@@ -7,10 +7,15 @@ import { connect } from 'react-redux';
 class AlbumView extends React.Component {
 
     static propTypes = {
-        statusText: React.PropTypes.string,
-        albums: React.PropTypes.array
+        statusText: React.PropTypes.string
     };
 
+
+    const mapStateToProps = (state) => {
+      return {
+        albums: albums
+      }
+    }
 
     // const mapDispatchToProps = (dispatch) => {
     //   return {
@@ -34,13 +39,9 @@ class AlbumView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps in Album/index.js");
-  console.log(state);
-  
-  return {
-      statusText: state.auth.statusText,
-      albums: state.albums
-  };
+    return {
+        statusText: state.auth.statusText
+    };
 };
 
 export default connect(mapStateToProps)(AlbumView);
