@@ -44,9 +44,12 @@ class HomeView extends React.Component {
     }
 }
 
+
+//  Added state.albums to this
 const mapStateToProps = (state) => {
     return {
-        statusText: state.auth.statusText
+        statusText: state.auth.statusText,
+        albums: state.albums
     };
 };
 

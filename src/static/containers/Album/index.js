@@ -12,6 +12,9 @@ class AlbumView extends React.Component {
         albums: React.PropTypes.array
     };
 
+    // let FetchAlbums = ({ dispatch }) => {
+    //   l
+    // }
     componentWillMount() {
         // const token = this.props.token;
         // this.props.actions.dataFetchProtectedData(token);
@@ -19,7 +22,8 @@ class AlbumView extends React.Component {
         // this.props.route.path === "albums"
         // debugger;
         console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
-        console.log(dataFetchAlbums);
+        console.log(dataFetchAlbums());
+        // debugger;
         dataFetchAlbums();
     }
 
@@ -54,5 +58,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(AlbumView);
-export { AlbumView as AlbumViewNotConnected };
+const Album = connect(mapStateToProps)(AlbumView)
+export default Album
+
+
+// export default connect(mapStateToProps)(AlbumView);
+// export { AlbumView as AlbumViewNotConnected };

@@ -3,7 +3,7 @@ import { push } from 'react-router-redux';
 
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
-import { DATA_FETCH_PROTECTED_DATA_REQUEST, DATA_RECEIVE_PROTECTED_DATA } from '../constants';
+import { DATA_FETCH_PROTECTED_DATA_REQUEST, DATA_RECEIVE_PROTECTED_DATA, DATA_FETCH_ALBUMS_REQUEST, DATA_RECEIVE_ALBUMS } from '../constants';
 import { authLoginUserFailure } from './auth';
 
 
@@ -23,6 +23,8 @@ export function dataFetchProtectedDataRequest() {
 }
 
 export function dataReceiveAlbums(data) {
+    console.log("static/actions/data.js dataReceiveAlbums(data)");
+    console.log(data);
     return {
         type: DATA_RECEIVE_ALBUMS,
         payload: {
@@ -32,8 +34,9 @@ export function dataReceiveAlbums(data) {
 }
 
 export function dataFetchAlbumsRequest() {
+    console.log("static/actions/data.js dataFetchAlbumsRequest()");
     return {
-        type: DATA_FETCH_ALBUMS
+        type: DATA_FETCH_ALBUMS_REQUEST
     };
 }
 
@@ -41,6 +44,7 @@ export function dataFetchProtectedData(token) {
     console.log('actions/data.js token:');
     console.log(token);
     return (dispatch, state) => {
+        console.log('about to run dispatch(dataFetchProtectedDataRequest()); in dataFetchProtectedData');
         dispatch(dataFetchProtectedDataRequest());
         return fetch(`${SERVER_URL}/api/v1/getdata/`, {
             credentials: 'include',
@@ -67,6 +71,16 @@ export function dataFetchProtectedData(token) {
 // Authorization: `JWT ${token}`
 export function dataFetchAlbums() {
     console.log("static/actions/data.js dataFetchAlbums()");
+    // dispatch(dataFetchAlbumsRequest());
+    // return fetch(`${SERVER_URL}/api/v1/getalbums/`, {
+    //     credentials: 'include',
+    //     headers: {
+    //         Accept: 'application/json'
+    //     }
+    // })
+
+
+
     return (dispatch, state) => {
         console.log('about to run dispatch(dataFetchAlbumsRequest()); in static/actions/data.js');
         console.log(dispatch);

@@ -7,12 +7,13 @@ from django.views.decorators.csrf import csrf_exempt
 from albums import views
 
 router = routers.DefaultRouter()
-router.register(r'albums', views.AlbumViewSet)
+# router.register(r'', views.AlbumViewSet)
 
 
 # app_name = 'albums'
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    # url(r'', views.AlbumViewSet, name="albums"),
+    url(r'', views.AlbumDataView.as_view(), name='album_data'),
     url(r'^api-token-auth/', csrf_exempt(obtain_jwt_token))
 
 
