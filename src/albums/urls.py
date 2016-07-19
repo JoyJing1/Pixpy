@@ -12,7 +12,7 @@ router = routers.DefaultRouter()
 
 # app_name = 'albums'
 urlpatterns = [
-    # url(r'', views.AlbumViewSet, name="albums"),
+    # url(r'^', include(router.urls)),
     url(r'', views.AlbumDataView.as_view(), name='album_data'),
     url(r'^api-token-auth/', csrf_exempt(obtain_jwt_token))
 

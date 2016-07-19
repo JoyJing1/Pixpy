@@ -20,8 +20,9 @@ class ProtectedView extends React.Component {
     // Render methods should be a pure function of props and state.
     componentWillMount() {
         const token = this.props.token;
+        console.log("token", this.props.token);
         this.props.actions.dataFetchProtectedData(token);
-        this.props.actions.dataFetchAlbums(token);
+        // this.props.actions.dataFetchAlbums(token);
     }
 
     render() {
