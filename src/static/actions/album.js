@@ -6,26 +6,6 @@ import { checkHttpStatus, parseJSON } from '../utils';
 import { DATA_FETCH_ALBUMS_REQUEST, DATA_RECEIVE_ALBUMS } from '../constants';
 import { authLoginUserFailure } from './auth';
 
-//
-// export function dataReceiveAlbums(albums) {
-//     console.log('static/actions/album.js dataReceiveAlbums(albums)');
-//     console.log(albums);
-//     return {
-//         type: DATA_RECEIVE_ALBUMS,
-//         payload: {
-//             albums
-//         }
-//     };
-// }
-//
-// export function dataFetchAlbumsRequest() {
-//     console.log('static/actions/album.js dateFetchAlbumsRequest()');
-//     return {
-//         type: DATA_FETCH_ALBUMS
-//     };
-// }
-
-
 
 export function dataReceiveAlbums(data) {
     console.log("static/actions/album.js dataReceiveAlbums(data)");
@@ -47,46 +27,8 @@ export function dataFetchAlbumsRequest() {
     };
 }
 
-//
-// export function dataFetchAlbums(token) {
-//     console.log('static/actions/album.js dateFetchAlbums()');
-//     console.log(token);
-//     console.log(`${SERVER_URL}/api/v1/getdata/`);
-//     return (dispatch, state) => {
-//         dispatch(dataFetchAlbumsRequest());
-//         return fetch(`${SERVER_URL}/api/v1/getdata/`, {
-//             credentials: 'include',
-//             headers: {
-//                 Accept: 'application/json',
-//                 Authorization: `JWT ${token}`
-//             }
-//         })
-//             .then(checkHttpStatus)
-//             .then(parseJSON)
-//             .then(response => {
-//                 dispatch(dataReceiveAlbums(response.albums));
-//             })
-//             .catch(error => {
-//                 if (error.response.status === 401) {
-//                     dispatch(authLoginUserFailure(error));
-//                     dispatch(push('/login'));
-//                 }
-//             });
-//     };
-// }
-
-
 export function dataFetchAlbums(token) {
     console.log("static/actions/album.js dataFetchAlbums()");
-    // dispatch(dataFetchAlbumsRequest());
-    // return fetch(`${SERVER_URL}/api/v1/getalbums/`, {
-    //     credentials: 'include',
-    //     headers: {
-    //         Accept: 'application/json'
-    //     }
-    // })
-
-
 
     return (dispatch, state) => {
         console.log('about to run dispatch(dataFetchAlbumsRequest()); in static/actions/album.js');
