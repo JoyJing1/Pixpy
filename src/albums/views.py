@@ -24,7 +24,6 @@ class AlbumDataView(GenericAPIView):
         return Response({ "albums": serializer.data }, content_type="JSON")
 
 
-
 class AlbumDetailView(GenericAPIView):
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Photo.objects.all()
