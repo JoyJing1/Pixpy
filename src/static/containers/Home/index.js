@@ -45,8 +45,6 @@ class HomeView extends React.Component {
     }
 }
 
-
-//  Added state.albums to this
 const mapStateToProps = (state) => {
   console.log('inside mapStateToProps in containers/Home/index.js');
     return {

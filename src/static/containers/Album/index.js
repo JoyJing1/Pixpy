@@ -12,37 +12,12 @@ class AlbumView extends React.Component {
         albums: React.PropTypes.array
     };
 
-    // let FetchAlbums = ({ dispatch }) => {
-    //   l
-    // }
     componentWillMount() {
-        // const token = this.props.token;
-        // this.props.actions.dataFetchProtectedData(token);
-        // debugger;
-        // this.props.route.path === "albums"
-        // debugger;
-        console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
-        // console.log(dataFetchAlbums());
-        // debugger;
-        // dataFetchAlbums();
+        // console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
         const token = this.props.token;
-        console.log("token", this.props.token);
-        // debugger;
         this.props.actions.dataFetchAlbums(token);
     }
 
-    // const mapDispatchToProps = (dispatch) => {
-    //   return {
-    //     onAlbumClick: (id) => {
-    //       dispatch(selectAlbum(id))
-    //     }
-    //   }
-    // }
-
-    // Pull all albums
-    // Display all album titles
-
-    // {this.props.albums[0]}
 
     render() {
         return (
@@ -57,9 +32,6 @@ class AlbumView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps in Album/index.js");
-  console.log(state);
-  // debugger;
   return {
       statusText: state.auth.statusText,
       albums: state.albums.albums
@@ -67,16 +39,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  console.log("containers/Album/index.js mapDispatchToProps");
+  // console.log("containers/Album/index.js mapDispatchToProps");
     return {
         actions: bindActionCreators(actionCreators, dispatch)
     };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumView);
-// export { AlbumView as AlbumViewNotConnected };
-// export default Album
-
-
-// export default connect(mapStateToProps)(AlbumView);
-// export { AlbumView as AlbumViewNotConnected };

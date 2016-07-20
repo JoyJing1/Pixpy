@@ -12,35 +12,17 @@ from albums.serializers import AlbumSerializer
 
 from .models import Album
 
-# def index(request):
-#     queryset = Album.objects.all()
-#     serializer_class = AlbumSerializer
-
-# class AlbumViewSet(viewsets.ModelViewSet):
-#     queryset = Album.objects.all()
-#     serializer_class = AlbumSerializer
-
-
 class AlbumDataView(GenericAPIView):
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
 
     print("in AlbumDataView")
-    # print(Album)
-    # print(get_list_or_404(Album))
     def get(self, request):
-        # albums = get_list_or_404(Album)
         queryset = self.get_queryset()
         serializer = AlbumSerializer(queryset, many=True)
-        # data = {
-        # 'albums': albums
-        # }
-        #
-        return Response({ "albums": serializer.data }, content_type="JSON")
 
-    # albums = get_list_or_404(Album)
-    # return HttpResponse(simplejson.dumps(albums), mimetype='application/json'
+        return Response({ "albums": serializer.data }, content_type="JSON")
 
 # def detail(request, album_id):
 #     album = get_object_or_404(Album, pk=album_id)
@@ -49,28 +31,3 @@ class AlbumDataView(GenericAPIView):
 #
 #     to_json = { album: album, photos: photos }
 #     return HttpResponse(simplejson.dumps(to_json), mimetype='application/json')
-
-
-
-
-
-
-
-    # class DetailView(generic.DetailView):
-    #     model = Album
-    #     # context_object_name = 'all_albums'
-    #     photos = get_list_or_404(Photo, album_id=self.id)
-    #     template_name = 'albums/detail.html'
-    #
-    #     def get_queryset(self):
-    #         return get_list_or_404(Photo, album_id=self.id)
-
-
-    # class IndexView(generic.ListView):
-    #     template_name = 'albums/index.html'
-    #     context_object_name = 'all_albums'
-    #
-    #     def get_queryset(self):
-    #         # return Album.objects.order_by('-upload_date')
-    #         albums Album.objects.order_by('-upload_date')
-    #         return HttpResponse(simplejson.dumps(albums), mimetype='application/json')

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../../actions/data';
-// import pdb; pdb.set_trace()
 
 import './style.scss';
 
@@ -16,15 +15,9 @@ class ProtectedView extends React.Component {
         actions: React.PropTypes.object.isRequired
     };
 
-    // Note: have to use componentWillMount, if I add this in constructor will get error:
-    // Warning: setState(...): Cannot update during an existing state transition (such as within `render`).
-    // Render methods should be a pure function of props and state.
     componentWillMount() {
         const token = this.props.token;
-        console.log("token", this.props.token);
-        // debugger;
         this.props.actions.dataFetchProtectedData(token);
-        // this.props.actions.dataFetchAlbums(token);
     }
 
     render() {
