@@ -25,44 +25,52 @@ class AlbumDataView(GenericAPIView):
 
     lookup_url_kwarg = "album_id"
 
-    def get(self, request, album_id):
+    def get(self, request):
         print("inside AlbumDataView.get()")
         # print(self.kwargs)
 
-        album_id = self.kwargs.get(self.lookup_url_kwarg)
-
-        print(album_id)
-
-        if "album_id" in self.kwargs:
-            # album_id = self.kwargs('album_id')
-            print("album_id successfully pulled")
-            print(album_id)
-            photos = Photo.objects.filter(album__id=album_id)
-            serializer = PhotoSerializer(photos, many=True)
-            return Response({ "photos": serializer.data }, content_type="JSON")
-
-        else:
-            print("no album_id was passed in url")
-            queryset = self.get_queryset()
-            serializer = AlbumSerializer(queryset, many=True)
-
-            return Response({ "albums": serializer.data }, content_type="JSON")
-
-
-        # print("no album_id was passed in url")
-        # queryset = self.get_queryset()
-        # serializer = AlbumSerializer(queryset, many=True)
+        # album_id = self.kwargs.get(self.lookup_url_kwarg)
         #
-        # return Response({ "albums": serializer.data }, content_type="JSON")
+        # print(album_id)
+        #
+        # if album_id:
+        #     # album_id = self.kwargs('album_id')
+        #     print("album_id successfully pulled")
+        #     print(album_id)
+        #     photos = Photo.objects.filter(album__id=album_id)
+        #     serializer = PhotoSerializer(photos, many=True)
+        #     return Response({ "photos": serializer.data }, content_type="JSON")
+        #
+        # else:
+        #     print("no album_id was passed in url")
+        #     queryset = self.get_queryset()
+        #     serializer = AlbumSerializer(queryset, many=True)
+        #
+        #     return Response({ "albums": serializer.data }, content_type="JSON")
+        #
+
+        print("no album_id was passed in url")
+        queryset = self.get_queryset()
+        serializer = AlbumSerializer(queryset, many=True)
+
+        return Response({ "albums": serializer.data }, content_type="JSON")
 
 
 
-# class AlbumDetailView(GenericAPIView):
-#     authentication_classes = (JSONWebTokenAuthentication,)
-#     # queryset = Album.objects.all()
-#     queryset = Photo.objects.all()
-#     serializer_class = PhotoSerializer
-#
+class AlbumDetailView(GenericAPIView):
+    authentication_classes = (JSONWebTokenAuthentication,)
+    # queryset = Album.objects.all()
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
+    lookup_url_kwarg = "album_id"
+
+    def get(self, request, album_id):
+        album_id = self.kwargs.get(self.lookup_url_kwarg)
+        photos = Photo.objects.filter(album__id=album_id)
+        serializer = PhotoSerializer(photos, many=True)
+        return Response({ "photos": serializer.data }, content_type="JSON")
+
+
 #     print("inside AlbumDetailView")
 #
 #     def get_queryset(self):
