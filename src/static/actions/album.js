@@ -16,7 +16,7 @@ export function dataReceiveAlbums(albums) {
     };
 }
 
-export function dataFetchAlbums() {
+export function dataFetchAlbumsRequest() {
     return {
         type: DATA_FETCH_ALBUMS
     };
@@ -24,7 +24,7 @@ export function dataFetchAlbums() {
 
 export function dataFetchAlbums(token) {
     return (dispatch, state) => {
-        dispatch(dataFetchAlbums());
+        dispatch(dataFetchAlbumsRequest());
         return fetch(`${SERVER_URL}/api/v1/getdata/`, {
             credentials: 'include',
             headers: {
