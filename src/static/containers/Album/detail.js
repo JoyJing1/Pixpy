@@ -7,6 +7,8 @@ import * as actionCreators from '../../actions/photo';
 
 import Masonry from 'react-masonry-component';
 
+import './style.scss';
+
 const masonryOptions = {
     transitionDuration: 0.1
 };
