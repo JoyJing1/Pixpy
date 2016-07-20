@@ -11,11 +11,12 @@ export function dataReceivePhotos(data) {
     console.log("static/actions/photo.js dataReceivePhotos(data)");
     console.log(data);
     console.log(data.photos);
-    let photos = data.photos;
+    // let photos = data.photos;
     return {
         type: DATA_RECEIVE_PHOTOS,
         payload: {
-            photos
+            photos: data.photos,
+            curr_album: data.curr_album
         }
     };
 }
