@@ -1,10 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './app';
-import { HomeView, LoginView, ProtectedView, NotFoundView, AlbumView } from './containers';
+import { HomeView, LoginView, ProtectedView, NotFoundView, AlbumView, AlbumDetailView } from './containers';
 import { requireAuthentication } from './utils/requireAuthentication';
-
-import AlbumDetailView from './containers/AlbumDetail/index.js';
 
 export default(
     <Route path="/" component={App}>

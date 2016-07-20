@@ -3,3 +3,4 @@ export LoginView from './Login/index';
 export ProtectedView from './Protected/index';
 export NotFoundView from './NotFound/index';
 export AlbumView from './Album/index';
+export AlbumDetailView from './Album/detail';
