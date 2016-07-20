@@ -28,12 +28,15 @@ class AlbumView extends React.Component {
                   {this.props.albums.map(album => {
                       return (
                           <li key={album.id}>
-                              <Link to="">{album.title}</Link>
+                              <Link to={`albums/${album.id}`}>
+                                {album.title}
+                              </Link>
                           </li>
                       );
                   })}
 
                 </ul>
+
             </div>
         );
     }

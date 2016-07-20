@@ -7,8 +7,8 @@ import photosReducer from './photos';
 
 export default combineReducers({
     auth: authReducer,
-    albums: albumsReducer,
     photos: photosReducer,
+    albums: albumsReducer,
     data: dataReducer,
     routing: routerReducer
 });

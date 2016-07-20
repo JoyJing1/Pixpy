@@ -26,12 +26,31 @@ class AlbumDataView(GenericAPIView):
 
 class AlbumDetailView(GenericAPIView):
     authentication_classes = (JSONWebTokenAuthentication,)
-    queryset = Photo.objects.all()
-    serializer_class = PhotoSerializer
+    # queryset = Photo.objects.all()
+    # photo_serializer_class = PhotoSerializer
     lookup_url_kwarg = "album_id"
 
     def get(self, request, album_id):
         album_id = self.kwargs.get(self.lookup_url_kwarg)
         photos = Photo.objects.filter(album__id=album_id)
-        serializer = PhotoSerializer(photos, many=True)
-        return Response({ "photos": serializer.data }, content_type="JSON")
+        photo_serializer = PhotoSerializer(photos, many=True)
+
+        album = Album.objects.filter(id=album_id)
+        album_serializer = AlbumSerializer(album, many=True)
+
+        return Response({ "curr_album": album_serializer.data, "photos": photo_serializer.data }, content_type="JSON")
+
+#
+# class CurrAlbumView(GenericAPIView):
+#     authentication_classes = (JSONWebTokenAuthentication,)
+#     queryset = Album.objects.all()
+#     serializer_class = AlbumSerializer
+#     lookup_url_kwarg = "album_id"
+#
+#     def get(self, request, album_id):
+#         print("inside CurrAlbumView.get()")
+#         album_id = self.kwargs.get(self.lookup_url_kwarg)
+#         album = Album.objects.filter(id=album_id)
+#         album_serializer = AlbumSerializer(album, many=True)
+#
+#         return Response({ "curr_album": album_serializer.data }, content_type="JSON")

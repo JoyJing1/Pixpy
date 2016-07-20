@@ -9,7 +9,8 @@ class AlbumDetailView extends React.Component {
 
     static propTypes = {
         statusText: React.PropTypes.string,
-        photos: React.PropTypes.array
+        photos: React.PropTypes.array,
+        curr_album: React.PropTypes.object
     };
 
     componentWillMount() {
@@ -23,18 +24,35 @@ class AlbumDetailView extends React.Component {
 
 
     render() {
+      // debugger;
+      // <h2>{this.props.curr_album.title}</h2>
         return (
             <div className="container">
-                <h3>AlbumDetailView</h3>
+                <ul>
+                  {this.props.photos.map( photo => {
+                    return (
+                      <li key={photo.id}>
+                        <a>
+                          <img src={photo.image_url}></img>
+                          <h3>{photo.caption}</h3>
+                          </a>
+                      </li>
+                    );
+                  })}
+                </ul>
             </div>
         );
     }
 }
 
+
+
 const mapStateToProps = (state) => {
+  debugger;
   return {
       statusText: state.auth.statusText,
-      photos: state.photos.photos
+      photos: state.photos.photos,
+      curr_album: state.photos.curr_album
   };
 };
 

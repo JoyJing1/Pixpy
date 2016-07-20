@@ -13,6 +13,7 @@ export default createReducer(initialState, {
             isFetching: false
         });
     },
+    // Should be able to remove payload?
     [DATA_FETCH_ALBUMS_REQUEST]: (state, payload) => {
         // console.log('reducers/albums.js DATA_FETCH_ALBUMS');
         return Object.assign({}, state, {

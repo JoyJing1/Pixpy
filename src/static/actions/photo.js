@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { push } from 'react-router-redux';
+// import { push } from 'react-router-redux';
 
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
@@ -35,8 +35,11 @@ export function dataFetchPhotos(token, albumId) {
         console.log(dispatch);
         console.log(state);
 
-        dispatch(dataFetchPhotosRequest(albumId));
-        return fetch(`${SERVER_URL}/api/v1/getalbums/${albumId}`, {
+        console.log("ALBUM ID PASSED TO PHOTO PULL");
+        console.log(albumId);
+        // debugger;
+        dispatch(dataFetchPhotosRequest());
+        return fetch(`${SERVER_URL}/api/v1/getalbums/${albumId}/`, {
             credentials: 'include',
             headers: {
                 Accept: 'application/json',
@@ -48,6 +51,7 @@ export function dataFetchPhotos(token, albumId) {
             .then(response => {
                 console.log("response within static/actions/photo.js");
                 console.log(response);
+                // debugger;
                 dispatch(dataReceivePhotos(response));
             })
             .catch(error => {
