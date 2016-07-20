@@ -51,8 +51,6 @@ export function dataFetchPhotos(token, albumId) {
                 dispatch(dataReceivePhotos(response));
             })
             .catch(error => {
-                // console.log(error);
-                // debugger;
                 if (error.response.status === 401) {
                     dispatch(authLoginUserFailure(error));
                     // dispatch(push('/login'));
