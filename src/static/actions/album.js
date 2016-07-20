@@ -3,11 +3,35 @@ import { push } from 'react-router-redux';
 
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
-import { DATA_FETCH_ALBUMS, DATA_RECEIVE_ALBUMS } from '../constants';
+import { DATA_FETCH_ALBUMS_REQUEST, DATA_RECEIVE_ALBUMS } from '../constants';
 import { authLoginUserFailure } from './auth';
 
+//
+// export function dataReceiveAlbums(albums) {
+//     console.log('static/actions/album.js dataReceiveAlbums(albums)');
+//     console.log(albums);
+//     return {
+//         type: DATA_RECEIVE_ALBUMS,
+//         payload: {
+//             albums
+//         }
+//     };
+// }
+//
+// export function dataFetchAlbumsRequest() {
+//     console.log('static/actions/album.js dateFetchAlbumsRequest()');
+//     return {
+//         type: DATA_FETCH_ALBUMS
+//     };
+// }
 
-export function dataReceiveAlbums(albums) {
+
+
+export function dataReceiveAlbums(data) {
+    console.log("static/actions/album.js dataReceiveAlbums(data)");
+    console.log(data);
+    console.log(data.albums);
+    let albums = data.albums;
     return {
         type: DATA_RECEIVE_ALBUMS,
         payload: {
@@ -16,16 +40,61 @@ export function dataReceiveAlbums(albums) {
     };
 }
 
-export function dataFetchAlbums() {
+export function dataFetchAlbumsRequest() {
+    console.log("static/actions/album.js dataFetchAlbumsRequest()");
     return {
-        type: DATA_FETCH_ALBUMS
+        type: DATA_FETCH_ALBUMS_REQUEST
     };
 }
 
+//
+// export function dataFetchAlbums(token) {
+//     console.log('static/actions/album.js dateFetchAlbums()');
+//     console.log(token);
+//     console.log(`${SERVER_URL}/api/v1/getdata/`);
+//     return (dispatch, state) => {
+//         dispatch(dataFetchAlbumsRequest());
+//         return fetch(`${SERVER_URL}/api/v1/getdata/`, {
+//             credentials: 'include',
+//             headers: {
+//                 Accept: 'application/json',
+//                 Authorization: `JWT ${token}`
+//             }
+//         })
+//             .then(checkHttpStatus)
+//             .then(parseJSON)
+//             .then(response => {
+//                 dispatch(dataReceiveAlbums(response.albums));
+//             })
+//             .catch(error => {
+//                 if (error.response.status === 401) {
+//                     dispatch(authLoginUserFailure(error));
+//                     dispatch(push('/login'));
+//                 }
+//             });
+//     };
+// }
+
+
 export function dataFetchAlbums(token) {
+    console.log("static/actions/album.js dataFetchAlbums()");
+    // dispatch(dataFetchAlbumsRequest());
+    // return fetch(`${SERVER_URL}/api/v1/getalbums/`, {
+    //     credentials: 'include',
+    //     headers: {
+    //         Accept: 'application/json'
+    //     }
+    // })
+
+
+
     return (dispatch, state) => {
-        dispatch(dataFetchAlbums());
-        return fetch(`${SERVER_URL}/api/v1/getdata/`, {
+        console.log('about to run dispatch(dataFetchAlbumsRequest()); in static/actions/album.js');
+        console.log(dispatch);
+        console.log(state);
+
+        dispatch(dataFetchAlbumsRequest(token));
+        return fetch(`${SERVER_URL}/api/v1/getalbums/`, {
             credentials: 'include',
             headers: {
                 Accept: 'application/json',
@@ -35,12 +104,16 @@ export function dataFetchAlbums(token) {
             .then(checkHttpStatus)
             .then(parseJSON)
             .then(response => {
-                dispatch(dataReceiveAlbums(response.albums));
+                console.log("response within static/actions/album.js");
+                console.log(response);
+                dispatch(dataReceiveAlbums(response));
             })
             .catch(error => {
+                // console.log(error);
+                // debugger;
                 if (error.response.status === 401) {
                     dispatch(authLoginUserFailure(error));
-                    dispatch(push('/login'));
+                    // dispatch(push('/login'));
                 }
             });
     };

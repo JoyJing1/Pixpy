@@ -7,12 +7,17 @@ const initialState = {
 
 export default createReducer(initialState, {
     [DATA_RECEIVE_ALBUMS]: (state, payload) => {
+        console.log('reducers/albums.js DATA_RECEIVE_ALBUMS');
+        console.log(payload);
+        console.log(payload.albums);
+        // debugger;
         return Object.assign({}, state, {
             albums: payload.albums,
             isFetching: false
         });
     },
     [DATA_FETCH_ALBUMS]: (state, payload) => {
+        console.log('reducers/albums.js DATA_FETCH_ALBUMS');
         return Object.assign({}, state, {
             isFetching: true
         });

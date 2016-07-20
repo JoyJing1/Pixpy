@@ -4,14 +4,13 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from rest_framework.generics import GenericAPIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.response import Response
 
 # from django.utils import simplejson
 from rest_framework import viewsets
 from albums.serializers import AlbumSerializer
 
 from .models import Album
-
-# import pdb
 
 # def index(request):
 #     queryset = Album.objects.all()
@@ -21,11 +20,8 @@ from .models import Album
 #     queryset = Album.objects.all()
 #     serializer_class = AlbumSerializer
 
-    # return Response({'function': 'AlbumViewSet'})
-
 
 class AlbumDataView(GenericAPIView):
-    # pdb.set_trace()
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
@@ -41,7 +37,7 @@ class AlbumDataView(GenericAPIView):
         # 'albums': albums
         # }
         #
-        return HttpResponse(serializer.data)
+        return Response({ "albums": serializer.data }, content_type="JSON")
 
     # albums = get_list_or_404(Album)
     # return HttpResponse(simplejson.dumps(albums), mimetype='application/json'

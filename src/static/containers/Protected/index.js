@@ -22,6 +22,7 @@ class ProtectedView extends React.Component {
     componentWillMount() {
         const token = this.props.token;
         console.log("token", this.props.token);
+        // debugger;
         this.props.actions.dataFetchProtectedData(token);
         // this.props.actions.dataFetchAlbums(token);
     }

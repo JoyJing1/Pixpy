@@ -6,8 +6,7 @@ import logoImage from './images/react-logo.png';
 class HomeView extends React.Component {
 
     static propTypes = {
-        statusText: React.PropTypes.string,
-        albums: React.PropTypes.array
+        statusText: React.PropTypes.string
     };
 
     render() {
@@ -51,8 +50,7 @@ class HomeView extends React.Component {
 const mapStateToProps = (state) => {
   console.log('inside mapStateToProps in containers/Home/index.js');
     return {
-        statusText: state.auth.statusText,
-        albums: state.albums
+        statusText: state.auth.statusText
     };
 };
 
