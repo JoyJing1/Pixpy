@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import logoImage from './images/react-logo.png';
@@ -14,6 +14,7 @@ class AlbumView extends React.Component {
 
     componentWillMount() {
         // console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
+        // {% url 'albums:detail' album.id %}
         const token = this.props.token;
         this.props.actions.dataFetchAlbums(token);
     }
@@ -23,9 +24,16 @@ class AlbumView extends React.Component {
         return (
             <div className="container">
                 <h3>This is my containers/AlbumView</h3>
-                {this.props.albums.map(album => {
-                    return album.title;
-                })}
+                <ul>
+                  {this.props.albums.map(album => {
+                      return (
+                          <li key={album.id}>
+                              <Link to="">{album.title}</Link>
+                          </li>
+                      );
+                  })}
+
+                </ul>
             </div>
         );
     }
