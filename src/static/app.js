@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { authLogoutAndRedirect } from './actions/auth';
-import SideMenu from './components/SideMenu';
+// import SideMenu from './components/SideMenu';
 import './styles/main.scss';
 
 class App extends React.Component {
@@ -44,6 +44,7 @@ class App extends React.Component {
         this.props.dispatch(authLogoutAndRedirect());
     };
 
+    // <SideMenu pathName={this.props.pathName} dispatch={this.props.dispatch}/>
     render() {
         // only show the sidebar for authenticated users
         let bodyContent = null;
@@ -51,7 +52,6 @@ class App extends React.Component {
             bodyContent = (
                 <div className="app">
                     <div className="app__sidebar">
-                        <SideMenu pathName={this.props.pathName} dispatch={this.props.dispatch}/>
                     </div>
                     <div className="app__content"
                          style={{ width: this.state.containerWidth }}
@@ -74,7 +74,7 @@ class App extends React.Component {
             <div className="app">
                 <nav className="app__navbar">
                     <Link className="app__navbar__title float-left" to="/">
-                        Django React Redux Demo
+                        Pixpy
                     </Link>
                     <ul className="float-right">
                         <li>

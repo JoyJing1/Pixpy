@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { push } from 'react-router-redux';
+// import { push } from 'react-router-redux';
 
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
