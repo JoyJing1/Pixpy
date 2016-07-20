@@ -14,17 +14,13 @@ class AlbumDetailView extends React.Component {
     };
 
     componentWillMount() {
-        console.log("containers/AlbumDetail/index.js componentWillMount - about to dataFetchPhotos");
-        // {% url 'albums:detail' album.id %}
-        // debugger;
-        console.log(this.props);
+        // console.log("containers/AlbumDetail/index.js componentWillMount - about to dataFetchPhotos");
         const token = this.props.token;
         this.props.actions.dataFetchPhotos(token, this.props.params.id);
     }
 
 
     render() {
-      // debugger;
         return (
             <div className="container">
                 <h2>{this.props.curr_album.title}</h2>
@@ -49,7 +45,6 @@ class AlbumDetailView extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  // debugger;
   let curr_album = state.photos.curr_album ? state.photos.curr_album[0] : {}
   return {
       statusText: state.auth.statusText,
@@ -59,7 +54,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    console.log("containers/AlbumDetail/index.js mapDispatchToProps");
+    // console.log("containers/AlbumDetail/index.js mapDispatchToProps");
     return {
         actions: bindActionCreators(actionCreators, dispatch)
     };
