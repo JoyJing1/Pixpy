@@ -15,7 +15,7 @@ class AlbumSerializer(serializers.ModelSerializer):
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = ('id', 'caption', 'image_url', 'upload_date')
+        fields = ('id', 'caption', 'image_url', 'upload_date', 'album')
 
     def create(self, validated_data):
         photo = Photo.objects.create(**validated_data)

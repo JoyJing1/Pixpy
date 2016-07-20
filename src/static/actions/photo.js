@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
-import { DATA_FETCH_PHOTOS_REQUEST, DATA_RECEIVE_PHOTOS } from '../constants';
+import { DATA_FETCH_PHOTOS_REQUEST, DATA_RECEIVE_PHOTOS, DATA_CREATE_PHOTO_REQUEST, DATA_RECEIVE_SINGLE_PHOTO } from '../constants';
 import { authLoginUserFailure } from './auth';
 
 
@@ -33,6 +33,52 @@ export function dataFetchPhotos(token, albumId) {
 
         dispatch(dataFetchPhotosRequest());
         return fetch(`${SERVER_URL}/api/v1/getalbums/${albumId}/`, {
+            credentials: 'include',
+            headers: {
+                Accept: 'application/json',
+                Authorization: `JWT ${token}`
+            },
+        })
+            .then(checkHttpStatus)
+            .then(parseJSON)
+            .then(response => {
+                // console.log("response within static/actions/photo.js");
+                dispatch(dataReceivePhotos(response));
+            })
+            .catch(error => {
+                if (error.response.status === 401) {
+                    dispatch(authLoginUserFailure(error));
+                    // dispatch(push('/login'));
+                }
+            });
+    };
+}
+
+export function dataReceiveSinglePhoto(data) {
+    // console.log("static/actions/photo.js dataReceivePhotos(data)");
+    return {
+        type: DATA_RECEIVE_SINGLE_PHOTO,
+        payload: {
+            photo: data.photo
+        }
+    };
+}
+
+export function dataCreatePhotoRequest() {
+    // console.log("static/actions/photo.js dataFetchPhotosRequest()");
+    return {
+        type: DATA_CREATE_PHOTO_REQUEST
+    };
+}
+
+export function dataCreatePhoto(token, photo) {
+    // console.log("static/actions/photo.js dataFetchPhotos()");
+
+    return (dispatch, state) => {
+        // console.log('about to run dispatch(dataFetchPhotosRequest()); in static/actions/photo.js');
+
+        dispatch(dataCreatePhotoRequest());
+        return fetch(`${SERVER_URL}/api/v1/getalbums/${photo.albumId}/createphoto`, {
             credentials: 'include',
             headers: {
                 Accept: 'application/json',

@@ -5,6 +5,9 @@ from django.views import generic
 from rest_framework.generics import GenericAPIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.response import Response
+from rest_framework import status
+from django.utils import timezone
+
 
 from rest_framework import viewsets
 from albums.serializers import AlbumSerializer, PhotoSerializer
@@ -37,3 +40,31 @@ class AlbumDetailView(GenericAPIView):
         album_serializer = AlbumSerializer(album, many=True)
 
         return Response({ "curr_album": album_serializer.data, "photos": photo_serializer.data }, content_type="JSON")
+
+
+class CreatePhoto(GenericAPIView):
+    print("inside CreatePhoto")
+    authentication_classes = (JSONWebTokenAuthentication,)
+    lookup_url_kwarg = "album_id"
+    # album_id = self.kwargs.get(self.lookup_url_kwarg)
+
+    def post(self, request, album_id):
+        print("inside CreatePhoto / post() request")
+        print(request)
+        album_id = self.kwargs.get(self.lookup_url_kwarg)
+
+        photo = request.data
+        album = Album.objects.filter(id=album_id)
+
+        photo["upload_date"] = timezone.now()
+        photo["album"] = album
+
+        print(photo)
+        serializer = PhotoSerializer(data=photo)
+
+        print(serializer)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
