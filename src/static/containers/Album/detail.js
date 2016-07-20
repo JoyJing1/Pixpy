@@ -5,9 +5,15 @@ import { bindActionCreators } from 'redux';
 // import logoImage from './images/react-logo.png';
 import * as actionCreators from '../../actions/photo';
 
-const Masonry = require('react-masonry-component');
+import Masonry from 'react-masonry-component';
+
 const masonryOptions = {
     transitionDuration: 0.1
+};
+
+const masonryStyle = {
+    // backgroundColor: 'tomato'
+    // padding: '10px'
 };
 
 class AlbumDetailView extends React.Component {
@@ -23,7 +29,6 @@ class AlbumDetailView extends React.Component {
         // const token = this.props.token;
         this.props.actions.dataFetchPhotos(this.props.token, this.props.params.id);
     }
-
 
     render() {
       const childElements = this.props.photos.map( photo => {
@@ -42,6 +47,7 @@ class AlbumDetailView extends React.Component {
                 <Masonry
                   className={'my-gallery-class'}
                   elementType={'ul'}
+                  style={masonryStyle}
                   options={masonryOptions}
                   disableImagesLoaded={false}
                   updateOnEachImageLoad={false}
@@ -52,18 +58,6 @@ class AlbumDetailView extends React.Component {
         );
     }
 }
-
-
-// {this.props.photos.map( photo => {
-//   return (
-//     <li key={photo.id}>
-//       <a>
-//         <img src={photo.image_url}></img>
-//         <h3>{photo.caption}</h3>
-//       </a>
-//     </li>
-//   );
-// })}
 
 const mapStateToProps = (state) => {
   let curr_album = state.photos.curr_album ? state.photos.curr_album[0] : {}
