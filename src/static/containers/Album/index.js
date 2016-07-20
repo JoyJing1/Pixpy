@@ -1,9 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 // import logoImage from './images/react-logo.png';
-import { dataFetchAlbums } from '../../actions/data'
+import * as actionCreators from '../../actions/album';
 
 class AlbumView extends React.Component {
 
@@ -12,55 +12,45 @@ class AlbumView extends React.Component {
         albums: React.PropTypes.array
     };
 
-    // let FetchAlbums = ({ dispatch }) => {
-    //   l
-    // }
     componentWillMount() {
-        // const token = this.props.token;
-        // this.props.actions.dataFetchProtectedData(token);
-        // debugger;
-        // this.props.route.path === "albums"
-        // debugger;
-        console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
-        console.log(dataFetchAlbums());
-        // debugger;
-        dataFetchAlbums();
+        // console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
+        // {% url 'albums:detail' album.id %}
+        const token = this.props.token;
+        this.props.actions.dataFetchAlbums(token);
     }
-
-    // const mapDispatchToProps = (dispatch) => {
-    //   return {
-    //     onAlbumClick: (id) => {
-    //       dispatch(selectAlbum(id))
-    //     }
-    //   }
-    // }
-
-    // Pull all albums
-    // Display all album titles
 
 
     render() {
         return (
             <div className="container">
                 <h3>This is my containers/AlbumView</h3>
+                <ul>
+                  {this.props.albums.map(album => {
+                      return (
+                          <li key={album.id}>
+                              <Link to="">{album.title}</Link>
+                          </li>
+                      );
+                  })}
+
+                </ul>
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps in Album/index.js");
-  console.log(state);
-
   return {
       statusText: state.auth.statusText,
-      albums: state.albums
+      albums: state.albums.albums
   };
 };
 
-const Album = connect(mapStateToProps)(AlbumView)
-export default Album
+const mapDispatchToProps = (dispatch) => {
+  // console.log("containers/Album/index.js mapDispatchToProps");
+    return {
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
 
-
-// export default connect(mapStateToProps)(AlbumView);
-// export { AlbumView as AlbumViewNotConnected };
+export default connect(mapStateToProps, mapDispatchToProps)(AlbumView);

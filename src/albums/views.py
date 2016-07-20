@@ -5,72 +5,32 @@ from django.views import generic
 from rest_framework.generics import GenericAPIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.response import Response
-# from django.utils import simplejson
 from rest_framework import viewsets
-from albums.serializers import AlbumSerializer
+from albums.serializers import AlbumSerializer, PhotoSerializer
 
-from .models import Album
-
-# def index(request):
-#     queryset = Album.objects.all()
-#     serializer_class = AlbumSerializer
-
-# class AlbumViewSet(viewsets.ModelViewSet):
-#     queryset = Album.objects.all()
-#     serializer_class = AlbumSerializer
-
-
+from .models import Album, Photo
 
 class AlbumDataView(GenericAPIView):
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
 
-    print("in AlbumDataView")
-    # print(Album)
-    # print(get_list_or_404(Album))
     def get(self, request):
-
+        print("inside AlbumDataView.get()")
         queryset = self.get_queryset()
         serializer = AlbumSerializer(queryset, many=True)
-        # data = {
-        # 'albums': albums
-        # }
-        #
-        return Response(serializer.data, content_type="JSON")
 
-    # albums = get_list_or_404(Album)
-    # return HttpResponse(simplejson.dumps(albums), mimetype='application/json'
-
-# def detail(request, album_id):
-#     album = get_object_or_404(Album, pk=album_id)
-#     photos = get_list_or_404(Photo, album_id=album_id)
-#     # return render(request, 'albums/detail.html', {'album': album, 'photos': photos})
-#
-#     to_json = { album: album, photos: photos }
-#     return HttpResponse(simplejson.dumps(to_json), mimetype='application/json')
+        return Response({ "albums": serializer.data }, content_type="JSON")
 
 
+class AlbumDetailView(GenericAPIView):
+    authentication_classes = (JSONWebTokenAuthentication,)
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
+    lookup_url_kwarg = "album_id"
 
-
-
-
-
-    # class DetailView(generic.DetailView):
-    #     model = Album
-    #     # context_object_name = 'all_albums'
-    #     photos = get_list_or_404(Photo, album_id=self.id)
-    #     template_name = 'albums/detail.html'
-    #
-    #     def get_queryset(self):
-    #         return get_list_or_404(Photo, album_id=self.id)
-
-
-    # class IndexView(generic.ListView):
-    #     template_name = 'albums/index.html'
-    #     context_object_name = 'all_albums'
-    #
-    #     def get_queryset(self):
-    #         # return Album.objects.order_by('-upload_date')
-    #         albums Album.objects.order_by('-upload_date')
-    #         return HttpResponse(simplejson.dumps(albums), mimetype='application/json')
+    def get(self, request, album_id):
+        album_id = self.kwargs.get(self.lookup_url_kwarg)
+        photos = Photo.objects.filter(album__id=album_id)
+        serializer = PhotoSerializer(photos, many=True)
+        return Response({ "photos": serializer.data }, content_type="JSON")

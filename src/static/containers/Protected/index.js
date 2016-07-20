@@ -15,14 +15,9 @@ class ProtectedView extends React.Component {
         actions: React.PropTypes.object.isRequired
     };
 
-    // Note: have to use componentWillMount, if I add this in constructor will get error:
-    // Warning: setState(...): Cannot update during an existing state transition (such as within `render`).
-    // Render methods should be a pure function of props and state.
     componentWillMount() {
         const token = this.props.token;
-        console.log("token", this.props.token);
         this.props.actions.dataFetchProtectedData(token);
-        // this.props.actions.dataFetchAlbums(token);
     }
 
     render() {
@@ -44,6 +39,8 @@ class ProtectedView extends React.Component {
                                     <div className="protected__protected-data">
                                         Data from server<br/>
                                         <b>{this.props.data}</b>
+                                        <h2>THIS IS YOUR TOKEN</h2>
+                                        <h2>{this.props.token}</h2>
                                     </div>
                                 </div>
                             </div>

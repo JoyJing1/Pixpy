@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // import logoImage from './images/react-logo.png';
+import { AlbumList } from '../components/Album/index.js'
 
 class AlbumView extends React.Component {
 

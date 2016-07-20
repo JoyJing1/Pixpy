@@ -39,17 +39,16 @@ class HomeView extends React.Component {
                     </div>
                 </div>
                 <h4>INSIDE HOME CONTAINER - LIST ALBUMS HERE?</h4>
+                {this.props.albums}
             </div>
         );
     }
 }
 
-
-//  Added state.albums to this
 const mapStateToProps = (state) => {
+  console.log('inside mapStateToProps in containers/Home/index.js');
     return {
-        statusText: state.auth.statusText,
-        albums: state.albums
+        statusText: state.auth.statusText
     };
 };
 
