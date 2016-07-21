@@ -8,9 +8,9 @@ import { authLoginUserFailure } from './auth';
 
 
 export function dataReceiveAlbums(data) {
-    console.log("static/actions/album.js dataReceiveAlbums(data)");
-    console.log(data);
-    console.log(data.albums);
+    // console.log("static/actions/album.js dataReceiveAlbums(data)");
+    // console.log(data);
+    // console.log(data.albums);
     let albums = data.albums;
     return {
         type: DATA_RECEIVE_ALBUMS,
@@ -21,19 +21,19 @@ export function dataReceiveAlbums(data) {
 }
 
 export function dataFetchAlbumsRequest() {
-    console.log("static/actions/album.js dataFetchAlbumsRequest()");
+    // console.log("static/actions/album.js dataFetchAlbumsRequest()");
     return {
         type: DATA_FETCH_ALBUMS_REQUEST
     };
 }
 
 export function dataFetchAlbums(token) {
-    console.log("static/actions/album.js dataFetchAlbums()");
+    // console.log("static/actions/album.js dataFetchAlbums()");
 
     return (dispatch, state) => {
-        console.log('about to run dispatch(dataFetchAlbumsRequest()); in static/actions/album.js');
-        console.log(dispatch);
-        console.log(state);
+        // console.log('about to run dispatch(dataFetchAlbumsRequest()); in static/actions/album.js');
+        // console.log(dispatch);
+        // console.log(state);
 
         dispatch(dataFetchAlbumsRequest(token));
         return fetch(`${SERVER_URL}/api/v1/getalbums/`, {
@@ -46,8 +46,8 @@ export function dataFetchAlbums(token) {
             .then(checkHttpStatus)
             .then(parseJSON)
             .then(response => {
-                console.log("response within static/actions/album.js");
-                console.log(response);
+                // console.log("response within static/actions/album.js");
+                // console.log(response);
                 dispatch(dataReceiveAlbums(response));
             })
             .catch(error => {

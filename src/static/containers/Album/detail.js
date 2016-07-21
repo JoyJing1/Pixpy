@@ -32,10 +32,10 @@ class AlbumDetailView extends React.Component {
         // const token = this.props.token;
         this.props.actions.dataFetchPhotos(this.props.token, this.props.params.id);
     }
-
-    uploadPhotos() {
-
-    }
+    //
+    // uploadPhotos() {
+    //
+    // }
 
 
     render() {
@@ -53,7 +53,7 @@ class AlbumDetailView extends React.Component {
                 <h2>{this.props.curr_album.title}</h2>
                 <h3>{this.props.curr_album.description}</h3>
 
-                <UploadPhotosButton/>
+                <UploadPhotosButton album={this.props.curr_album}/>
 
                 <Masonry
                   className={'my-gallery-class'}

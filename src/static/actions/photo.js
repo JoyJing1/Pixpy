@@ -55,7 +55,7 @@ export function dataFetchPhotos(token, albumId) {
 }
 
 export function dataReceiveSinglePhoto(data) {
-    // console.log("static/actions/photo.js dataReceivePhotos(data)");
+    console.log("static/actions/photo.js dataReceiveSinglePhoto(data)");
     return {
         type: DATA_RECEIVE_SINGLE_PHOTO,
         payload: {
@@ -65,20 +65,21 @@ export function dataReceiveSinglePhoto(data) {
 }
 
 export function dataCreatePhotoRequest() {
-    // console.log("static/actions/photo.js dataFetchPhotosRequest()");
+    console.log("static/actions/photo.js dataCreatePhotoRequest()");
     return {
         type: DATA_CREATE_PHOTO_REQUEST
     };
 }
 
 export function dataCreatePhoto(token, photo) {
-    // console.log("static/actions/photo.js dataFetchPhotos()");
+    console.log("static/actions/photo.js dataCreatePhoto()");
 
     return (dispatch, state) => {
-        // console.log('about to run dispatch(dataFetchPhotosRequest()); in static/actions/photo.js');
+        console.log('about to run dispatch(dataCreatePhotoRequest()); in static/actions/photo.js');
 
         dispatch(dataCreatePhotoRequest());
-        return fetch(`${SERVER_URL}/api/v1/getalbums/${photo.albumId}/createphoto`, {
+        console.log(`album_id = ${photo.album.id}`)
+        return fetch(`${SERVER_URL}/api/v1/getalbums/${photo.album.id}/createphoto`, {
             credentials: 'include',
             headers: {
                 Accept: 'application/json',
@@ -88,14 +89,18 @@ export function dataCreatePhoto(token, photo) {
             .then(checkHttpStatus)
             .then(parseJSON)
             .then(response => {
-                // console.log("response within static/actions/photo.js");
+                console.log("response within static/actions/photo.js");
+                console.log(response);
                 dispatch(dataReceivePhotos(response));
             })
             .catch(error => {
                 if (error.response.status === 401) {
+                    console.log('Got an error when trying to create photo');
                     dispatch(authLoginUserFailure(error));
                     // dispatch(push('/login'));
                 }
             });
     };
 }
+
+// export { dataFetchPhotos, dataCreatePhoto };

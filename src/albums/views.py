@@ -8,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.utils import timezone
 
+from rest_framework.mixins import CreateModelMixin
+
 # import cloudinary
 # import cloudinary.uploader
 # import cloudinary.api
@@ -46,21 +48,35 @@ class AlbumDetailView(GenericAPIView):
         return Response({ "curr_album": album_serializer.data, "photos": photo_serializer.data }, content_type="JSON")
 
 
-class CreatePhoto(GenericAPIView):
+class CreatePhoto(GenericAPIView, CreateModelMixin):
     print("inside CreatePhoto")
     authentication_classes = (JSONWebTokenAuthentication,)
     lookup_url_kwarg = "album_id"
 
     def post(self, request, album_id):
+    # def post(self, request, album_id):
+        print("attempting to post photo")
         album_id = self.kwargs.get(self.lookup_url_kwarg)
+        print(album_id)
 
-        photo = request.data
         album = Album.objects.filter(id=album_id)
+        print(album)
+        data = request.data
+        print(data)
 
-        photo["album"] = album
-        photo["upload_date"] = timezone.now()
+        caption = data["caption"]
+        image_url = data["image_url"]
+        upload_date = timezone.now()
+
+        photo = { 'caption': caption,
+                    'image_url': image_url,
+                    'album': album,
+                    'upload_date': upload_date }
+        print(photo)
 
         serializer = PhotoSerializer(data=photo)
+
+        print(photo)
 
         if serializer.is_valid():
             serializer.save()
