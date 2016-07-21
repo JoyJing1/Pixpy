@@ -24,7 +24,7 @@ src/static_root/
 node_modules/
 npm-debug.log
 
-# Coverage 
+# Coverage
 coverage/
 .coverage
 .cache
@@ -40,3 +40,5 @@ shippable/
 
 # not include scripts because they come from external module
 scripts/
+
+./src/static/components/cloudinary.js

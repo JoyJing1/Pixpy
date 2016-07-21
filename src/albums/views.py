@@ -46,23 +46,17 @@ class CreatePhoto(GenericAPIView):
     print("inside CreatePhoto")
     authentication_classes = (JSONWebTokenAuthentication,)
     lookup_url_kwarg = "album_id"
-    # album_id = self.kwargs.get(self.lookup_url_kwarg)
 
     def post(self, request, album_id):
-        print("inside CreatePhoto / post() request")
-        print(request)
         album_id = self.kwargs.get(self.lookup_url_kwarg)
 
         photo = request.data
         album = Album.objects.filter(id=album_id)
 
-        photo["upload_date"] = timezone.now()
         photo["album"] = album
+        photo["upload_date"] = timezone.now()
 
-        print(photo)
         serializer = PhotoSerializer(data=photo)
-
-        print(serializer)
 
         if serializer.is_valid():
             serializer.save()

@@ -1,5 +1,5 @@
 import { createReducer } from '../utils';
-import { DATA_RECEIVE_PHOTOS, DATA_FETCH_PHOTOS_REQUEST } from '../constants';
+import { DATA_RECEIVE_PHOTOS, DATA_FETCH_PHOTOS_REQUEST, DATA_RECEIVE_SINGLE_PHOTO, DATA_CREATE_PHOTO_REQUEST } from '../constants';
 
 const initialState = {
     photos: []
@@ -18,6 +18,22 @@ export default createReducer(initialState, {
     },
     [DATA_FETCH_PHOTOS_REQUEST]: (state, payload) => {
         console.log('reducers/photos.js DATA_FETCH_PHOTOS');
+        return Object.assign({}, state, {
+            isFetching: true
+        });
+    },
+    [DATA_RECEIVE_SINGLE_PHOTO]: (state, payload) => {
+        console.log('reducers/photos.js DATA_RECEIVE_SINGLE_PHOTO');
+        // payload.photos currently undefined
+        // debugger;
+        // state.photos.concat(payload.photo)
+        return Object.assign({}, state, {
+            photos: state.photos.concat(payload.photo),
+            isFetching: false
+        });
+    },
+    [DATA_CREATE_PHOTO_REQUEST]: (state, payload) => {
+        console.log('reducers/photos.js DATA_CREATE_PHOTOS');
         return Object.assign({}, state, {
             isFetching: true
         });

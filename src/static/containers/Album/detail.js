@@ -7,6 +7,7 @@ import * as actionCreators from '../../actions/photo';
 
 import Masonry from 'react-masonry-component';
 
+
 import './style.scss';
 
 const masonryOptions = {
@@ -32,10 +33,16 @@ class AlbumDetailView extends React.Component {
         this.props.actions.dataFetchPhotos(this.props.token, this.props.params.id);
     }
 
+    uploadPhotos() {
+
+    }
+
+
     render() {
       const childElements = this.props.photos.map( photo => {
           return (
-              <li className="image-element-class" key={photo.id}>
+              <li className="image-element-class"
+                  key={photo.id}>
                   <img src={photo.image_url} />
               </li>
            );
