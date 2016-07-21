@@ -2,13 +2,8 @@ import React from 'react';
 // import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import logoImage from './images/react-logo.png';
 import * as actionCreators from '../../actions/photo';
 import UploadPhotosButton from '../../components/upload_photos_button';
-
-// const UploadPhotosButton = require('../../components/upload_photos_button');
-
-// const UploadPhotosButton = require('../../components/upload_photos_button');
 
 import Masonry from 'react-masonry-component';
 

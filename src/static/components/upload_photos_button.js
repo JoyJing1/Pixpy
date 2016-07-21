@@ -2,7 +2,6 @@
 
 import React from 'react';
 import dataCreatePhoto from '../actions/photo';
-
 import CLOUDINARY_OPTIONS from './cloudinary_options';
 
 class UploadPhotosButton extends React.Component {
