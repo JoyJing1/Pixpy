@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import logoImage from './images/react-logo.png';
 import * as actionCreators from '../../actions/album';
+import CreateAlbumModal from '../../components/AlbumComponents/create_album_modal';
+import { ModalManager } from 'react-dynamic-modal';
 
 class AlbumView extends React.Component {
 
@@ -11,6 +13,10 @@ class AlbumView extends React.Component {
         statusText: React.PropTypes.string,
         albums: React.PropTypes.array
     };
+
+    openModal(){
+      ModalManager.open(<CreateAlbumModal onRequestClose={()=>true}/>)
+    }
 
     componentWillMount() {
         // console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
@@ -36,7 +42,7 @@ class AlbumView extends React.Component {
                   })}
 
                 </ul>
-
+                <button onClick={this.openModal}/>
             </div>
         );
     }

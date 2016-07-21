@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-// import { push } from 'react-router-redux';
+import { push } from 'react-router-redux';
 
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
@@ -33,8 +33,8 @@ export function dataFetchAlbums(token) {
 
     return (dispatch, state) => {
         console.log('about to run dispatch(dataFetchAlbumsRequest()); in static/actions/album.js');
-        console.log(dispatch);
-        console.log(state);
+        // console.log(dispatch);
+        // console.log(state);
 
         dispatch(dataFetchAlbumsRequest(token));
         return fetch(`${SERVER_URL}/api/v1/getalbums/`, {
