@@ -1,7 +1,6 @@
-const CLOUDINARY = {
+module.exports = {
     cloud_name: 'joyjing1',
-    api_key: '945272119922973',
-    api_secret: '3TcLuffV-L6AnuOGZlnv7Yib6nU'
+    upload_preset: 'friendeximgs',
+    theme: 'minimal',
+    client_allowed_formats: ['png', 'gif', 'jpeg']
 };
-
-module.exports = CLOUDINARY;

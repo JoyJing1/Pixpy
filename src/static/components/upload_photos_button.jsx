@@ -6,7 +6,7 @@
 import { PropTypes, React } from 'react';
 import dataCreatePhoto from '../../actions/photo';
 
-import CLOUDINARY from 'cloudinary';
+import CLOUDINARY_OPTIONS from 'cloudinary';
 //
 // import cloudinary;
 // import cloudinary.uploader;
@@ -18,7 +18,7 @@ const UploadPhotosButton = React.createClass({
         let that = this;
 
         cloudinary.openUploadWidget(
-            window.CLOUDINARY_OPTIONS,
+            CLOUDINARY_OPTIONS,
             function(error, images) {
                 if (error === null) {
                   // console.log("Upload succeeded in upload_photos_button.jsx");
