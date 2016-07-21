@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import logoImage from './images/react-logo.png';
 import * as actionCreators from '../../actions/photo';
+import UploadPhotosButton from '../../components/upload_photos_button';
+
+// const UploadPhotosButton = require('../../components/upload_photos_button');
+
+// const UploadPhotosButton = require('../../components/upload_photos_button');
 
 import Masonry from 'react-masonry-component';
 
@@ -52,6 +57,8 @@ class AlbumDetailView extends React.Component {
             <div className="container">
                 <h2>{this.props.curr_album.title}</h2>
                 <h3>{this.props.curr_album.description}</h3>
+
+                <UploadPhotosButton/>
 
                 <Masonry
                   className={'my-gallery-class'}

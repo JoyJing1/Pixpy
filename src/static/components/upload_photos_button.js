@@ -1,18 +1,11 @@
 "use strict";
 
-// const PropTypes = require('react').PropTypes
-//     , React = require('react');
+import React from 'react';
+import dataCreatePhoto from '../actions/photo';
 
-import { PropTypes, React } from 'react';
-import dataCreatePhoto from '../../actions/photo';
+import CLOUDINARY_OPTIONS from './cloudinary_options';
 
-import CLOUDINARY_OPTIONS from 'cloudinary';
-//
-// import cloudinary;
-// import cloudinary.uploader;
-// import cloudinary.api;
-
-const UploadPhotosButton = React.createClass({
+class UploadPhotosButton extends React.Component {
     upload(e) {
         e.preventDefault(e);
         let that = this;
@@ -21,7 +14,7 @@ const UploadPhotosButton = React.createClass({
             CLOUDINARY_OPTIONS,
             function(error, images) {
                 if (error === null) {
-                  // console.log("Upload succeeded in upload_photos_button.jsx");
+                    // console.log("Upload succeeded in upload_photos_button.jsx");
                     for (let i = 0; i < images.length; i++) {
                         const photo = { image_url: images[i].url, caption: "Need to prompt for caption (modal?)" };
                         // prompt to add a caption
@@ -36,7 +29,7 @@ const UploadPhotosButton = React.createClass({
                 }
             }
       );
-  },
+  }
 
     render() {
         return (
@@ -45,6 +38,6 @@ const UploadPhotosButton = React.createClass({
         );
     }
 
-});
+}
 
-module.exports = UploadPhotosButton;
+export default UploadPhotosButton;

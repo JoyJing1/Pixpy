@@ -8,6 +8,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.utils import timezone
 
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
+
 
 from rest_framework import viewsets
 from albums.serializers import AlbumSerializer, PhotoSerializer
