@@ -20,11 +20,12 @@ class AlbumView extends React.Component {
   render() {
     return (
       <div className="container">
-        <h3>This is my containers/AlbumView</h3>
+        <h2>P<span>i</span>xpy P<span>i</span>cs</h2>
+        <h3>Explore all albums on Pixpy, a Django/Redux photo-sharing app</h3>
         <ul>
           {this.props.albums.map(album => {
             return (
-              <li key={album.id}>
+              <li key={album.id} className="album-item">
                 <Link to={`albums/${album.id}`}>
                   {album.title}
                 </Link>

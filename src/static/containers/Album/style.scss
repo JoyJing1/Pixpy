@@ -101,4 +101,11 @@ ul.photos-list {
   object-fit: cover;
 }
 
-// ADD PHOTO MODAL
+// ALBUM INDEX PAGE
+li.album-item:hover a {
+  color: white;
+}
+
+span {
+  color: $color-green-default;
+}

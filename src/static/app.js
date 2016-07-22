@@ -49,8 +49,6 @@ class App extends React.Component {
         this.props.dispatch(push('/albums'));
     };
 
-    //  style={{ width: this.state.containerWidth }}
-    // <SideMenu pathName={this.props.pathName} dispatch={this.props.dispatch}/>
     render() {
         // only show the sidebar for authenticated users
         let bodyContent = null;
