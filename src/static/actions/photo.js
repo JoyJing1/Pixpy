@@ -95,7 +95,7 @@ export function dataCreatePhoto(token, photo) {
             .then(response => {
                 console.log("response within static/actions/photo.js");
                 console.log(response);
-                dispatch(dataReceivePhotos(response));
+                dispatch(dataReceiveSinglePhoto(response));
             })
             .catch(error => {
                 console.log(error)
