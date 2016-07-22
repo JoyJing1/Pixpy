@@ -57,20 +57,20 @@ class CreatePhoto(GenericAPIView, CreateModelMixin):
     lookup_url_kwarg = "album_id"
 
     def post(self, request, album_id):
-        print("attempting to post photo")
+        # print("attempting to post photo")
         album_id = self.kwargs.get(self.lookup_url_kwarg)
-        print(album_id)
+        # print(album_id)
 
         album = Album.objects.filter(id=album_id)
-        print(album)
-        print(request)
+        # print(album)
+        # print(request)
         body = request.body
-        print(body)
+        # print(body)
 
-        print("JSONified version of data")
+        # print("JSONified version of data")
 
         data = json.loads(body.decode("utf-8"))
-        print(data)
+        # print(data)
 
         caption = data["caption"]
         image_url = data["image_url"]
@@ -80,11 +80,11 @@ class CreatePhoto(GenericAPIView, CreateModelMixin):
                     'image_url': image_url,
                     'album': album,
                     'upload_date': upload_date }
-        print(photo)
+        # print(photo)
 
         photo_serializer = PhotoSerializer(data=photo)
 
-        print(photo_serializer)
+        # print(photo_serializer)
 
         if photo_serializer.is_valid():
             photo_serializer.save()
