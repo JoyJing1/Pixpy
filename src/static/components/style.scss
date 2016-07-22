@@ -1,34 +1,65 @@
+/* Clearfix */
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .photo-modal {
   background-color: $color-silver-dark;
 }
+
 .new-photo {
   max-width: 70%;
   max-height: 50%;
   display: block;
   margin: 10px auto;
-  border: 1px solid $color-silver-light;
 }
 
-input[type="text"] {
-  // width: 100%;
+.input-wrapper {
   border-radius: 5px;
-  border: 2px solid $color-silver-dark;
+  border: 2px solid #006633;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   box-shadow: none;
-  padding: 6px;
-  width: 90%;
+  width: 84%;
   display: block;
   margin: 10px auto;
+  background-color: black;
+  color: white;
 }
+
+input[type="text"] {
+  width: calc(100% - 40px);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  padding: 6px 10px;
+  display: inline-block;
+  background-color: black;
+  color: white;
+  border: 0;
+}
+
+input[type="text"]:focus {
+  border: 0;
+}
+
+.return-arrow {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  height: 20px;
+  float: right;
+  margin: 6px 10px;
+}
+
 
 // PHOTO DETAIL MODAL
-
-.photo-modal {
-  // background-color: $color-silver-dark;
-}
-
 .photo-detail {
   max-width: 70%;
   max-height: 50%;
@@ -38,12 +69,15 @@ input[type="text"] {
 
 a.photo-caption {
   text-align: center;
-  /* align-self: center; */
   margin: 10px auto;
   display: block;
   color: $color-white;
 }
 
 a.photo-caption:hover {
-cursor: default;
+  cursor: default;
+}
+
+.return-arrow:hover {
+  cursor: pointer;
 }

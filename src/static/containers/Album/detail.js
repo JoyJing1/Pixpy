@@ -12,18 +12,25 @@ import { ModalManager } from 'react-dynamic-modal';
 import AddCaption from '../../components/add_caption';
 import PhotoDetail from '../../components/photo_detail';
 
-import Masonry from 'react-masonry-component';
+// import Masonry from 'react-masonry-component';
 
 import './style.scss';
 
-const masonryOptions = {
-  transitionDuration: 0
-};
+const STYLE = { content: { background: 'black',
+                            border: "2px solid #828282",
+                            borderRadius: "10px" },
+                overlay: { backgroundColor: 'rgba(0, 0, 0, 0.7)'}
+              };
 
-const masonryStyle = {
-  // backgroundColor: 'tomato'
-  // padding: '10px'
-};
+
+// const masonryOptions = {
+//   transitionDuration: 0
+// };
+//
+// const masonryStyle = {
+//   // backgroundColor: 'tomato'
+//   // padding: '10px'
+// };
 
 class AlbumDetailView extends React.Component {
 
@@ -49,17 +56,13 @@ class AlbumDetailView extends React.Component {
     // debugger;
     // const image_url = this.image_url;
     // const caption = this.caption;
-    const style = { content: { background: 'black',
-                                border: "2px solid #828282",
-                                borderRadius: "10px" },
-                    overlay: { backgroundColor: 'rgba(0, 0, 0, 0.7)'}
-                  };
+
 
     ModalManager.open(<PhotoDetail
       onRequestClose={() => true}
       imageUrl={this.image_url}
       caption={this.caption}
-      style={style}/>);
+      style={STYLE}/>);
   }
 
   createPhoto(photo) {
@@ -80,7 +83,11 @@ class AlbumDetailView extends React.Component {
           for (let i = 0; i < images.length; i++) {
             const image_url = images[i].secure_url
             const photo = { image_url: image_url, album_id: album.id };
-            ModalManager.open(<AddCaption onRequestClose={() => true} imageUrl={image_url} photo={photo} createPhoto={that.createPhoto.bind(that)}/>);
+            ModalManager.open(<AddCaption onRequestClose={() => true}
+                imageUrl={image_url}
+                photo={photo}
+                style={STYLE}
+                createPhoto={that.createPhoto.bind(that)}/>);
           }
         } else {
           // console.log("Upload failed in upload_photos_button.jsx");
