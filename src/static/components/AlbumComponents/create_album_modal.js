@@ -1,3 +1,4 @@
+import { dataCreateAlbum } from '../../actions/album';
 import { Modal,ModalManager,Effect} from 'react-dynamic-modal';
 import CreateAlbumForm from './create_album_form';
 import { Button } from 'react-bootstrap';
@@ -5,7 +6,8 @@ import React from 'react';
 
 export default class CreateAlbumModal extends React.Component {
    _handleSubmit(){
-     console.log(this.refs.createForm.state.value);
+     const album = this.refs.createForm.state;
+     this.props.createAlbum(this.props.token, album)
      ModalManager.close();
    }
    render(){
@@ -24,7 +26,7 @@ export default class CreateAlbumModal extends React.Component {
             </div>
 
             <div className="modal-footer">
-              <Button bsStyle="success"onClick={this._handleSubmit}>
+              <Button bsStyle="success"onClick={this._handleSubmit.bind(this)}>
                 Create
               </Button>
               <Button onClick={ModalManager.close}>

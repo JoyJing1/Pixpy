@@ -7,13 +7,29 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.response import Response
 from rest_framework import viewsets
 from albums.serializers import AlbumSerializer, PhotoSerializer
+from rest_framework.mixins import CreateModelMixin
+from django.utils import timezone
+from rest_framework import status
 
 from .models import Album, Photo
 
-class AlbumDataView(GenericAPIView):
+class AlbumDataView(GenericAPIView, CreateModelMixin):
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(upload_date=timezone.now())
+        # Response({"album": serializer.data}, content_type="JSON")
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({"album": serializer.data}, status=status.HTTP_201_CREATED, headers=headers)
+
+
 
     def get(self, request):
         print("inside AlbumDataView.get()")
@@ -22,6 +38,12 @@ class AlbumDataView(GenericAPIView):
 
         return Response({ "albums": serializer.data }, content_type="JSON")
 
+    def post(self, request):
+        print("inside AlbumDataView.post()")
+        print(request.data)
+        data = request.data
+        response = self.create(request)
+        return response
 
 class AlbumDetailView(GenericAPIView):
     authentication_classes = (JSONWebTokenAuthentication,)

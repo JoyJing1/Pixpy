@@ -15,7 +15,8 @@ class AlbumView extends React.Component {
     };
 
     openModal(){
-      ModalManager.open(<CreateAlbumModal onRequestClose={()=>true}/>)
+      const token = this.props.token
+      ModalManager.open(<CreateAlbumModal onRequestClose={()=>true} token={token} createAlbum={this.props.actions.dataCreateAlbum.bind(this)}/>)
     }
 
     componentWillMount() {
@@ -42,7 +43,7 @@ class AlbumView extends React.Component {
                   })}
 
                 </ul>
-                <button onClick={this.openModal}/>
+                <button onClick={this.openModal.bind(this)}> Open Create Album Modal </button>
             </div>
         );
     }

@@ -5,7 +5,7 @@ from albums.models import Album, Photo
 class AlbumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Album
-        fields = ('id', 'title', 'description')
+        fields = ('id', 'title', 'description', 'image_url')
 
     def create(self, validated_data):
         album = Album.objects.create(**validated_data)
