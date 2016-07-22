@@ -42,7 +42,7 @@ class AlbumView extends React.Component {
                   })}
 
                 </ul>
-                <button onClick={this.openModal.bind(this)}> Open Create Album Modal </button>
+                <button className="new-album" onClick={this.openModal.bind(this)}> Open Create Album Modal </button>
             </div>
         );
     }

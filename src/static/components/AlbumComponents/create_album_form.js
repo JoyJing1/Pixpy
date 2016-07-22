@@ -1,6 +1,8 @@
 import {FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
 import React from 'react';
 
+import './style.scss';
+
 export default class CreateAlbumForm extends React.Component{
   constructor(props) {
       super(props);

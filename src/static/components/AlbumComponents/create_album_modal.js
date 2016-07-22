@@ -4,6 +4,8 @@ import CreateAlbumForm from './create_album_form';
 import { Button } from 'react-bootstrap';
 import React from 'react';
 
+import './style.scss';
+
 export default class CreateAlbumModal extends React.Component {
    _handleSubmit(){
      const album = this.refs.createForm.state;
