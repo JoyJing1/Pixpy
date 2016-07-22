@@ -18,10 +18,6 @@ export default class MyModal extends Component{
     };
   }
 
-  // componentDidMount() {
-  //   this.refs.captionInput.getDOMNode().focus();
-  // }
-
   handleInputChange = (e) => {
     this.setState({
       body: e.currentTarget.value

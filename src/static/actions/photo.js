@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-// import { push } from 'react-router-redux';
+import { push } from 'react-router-redux';
 
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
@@ -48,7 +48,7 @@ export function dataFetchPhotos(token, albumId) {
     .catch(error => {
       if (error.response.status === 401) {
         dispatch(authLoginUserFailure(error));
-        // dispatch(push('/login'));
+        dispatch(push('/login'));
       }
     });
   };
@@ -65,22 +65,15 @@ export function dataReceiveSinglePhoto(data) {
 }
 
 export function dataCreatePhotoRequest() {
-  // console.log("static/actions/photo.js dataCreatePhotoRequest()");
   return {
     type: DATA_CREATE_PHOTO_REQUEST
   };
 }
 
 export function dataCreatePhoto(token, photo) {
-  // console.log("static/actions/photo.js dataCreatePhoto()");
 
   return (dispatch, state) => {
-    // console.log('about to run dispatch(dataCreatePhotoRequest()); in static/actions/photo.js');
-
     dispatch(dataCreatePhotoRequest());
-    // console.log(`album_id = ${photo.album_id}`)
-    // debugger;
-    // console.log(photo);
     return fetch(`${SERVER_URL}/api/v1/getalbums/${photo.album_id}/createphoto/`, {
       credentials: 'include',
       method: 'POST',
@@ -93,20 +86,13 @@ export function dataCreatePhoto(token, photo) {
     .then(checkHttpStatus)
     .then(parseJSON)
     .then(response => {
-      // console.log("response within static/actions/photo.js");
-      // console.log(response);
       dispatch(dataReceiveSinglePhoto(response));
     })
     .catch(error => {
-      // console.log(error);
-      // debugger;
       if (error.response.status === 401) {
-        // console.log('Got an error when trying to create photo');
         dispatch(authLoginUserFailure(error));
         dispatch(push('/login'));
       }
     });
   };
 }
-
-// export { dataFetchPhotos, dataCreatePhoto };
