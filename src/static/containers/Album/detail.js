@@ -7,6 +7,9 @@ import * as actionCreators from '../../actions/photo';
 // import { dataCreatePhoto } from '../../actions/photo';
 import UploadPhotosButton from '../../components/upload_photos_button';
 import CLOUDINARY_OPTIONS from '../../components/cloudinary_options';
+import { ModalManager } from 'react-dynamic-modal';
+
+import AddCaption from '../../components/add_caption';
 
 import Masonry from 'react-masonry-component';
 
@@ -36,10 +39,21 @@ class AlbumDetailView extends React.Component {
     this.props.actions.dataFetchPhotos(this.props.token, this.props.params.id);
   }
 
+  openCaptionModal(image_url) {
+    ModalManager.open(<AddCaption onRequestClose={() => true} imageUrl={image_url}/>);
+  }
+
+  createPhoto(photo) {
+    debugger;
+    const dataCreatePhoto = this.props.actions.dataCreatePhoto;
+    dataCreatePhoto(window.sessionStorage.token, photo);
+  }
+
   upload(e) {
     e.preventDefault(e);
+    const that = this;
     const album = this.props.curr_album;
-    const dataCreatePhoto = this.props.actions.dataCreatePhoto;
+    // const dataCreatePhoto = this.props.actions.dataCreatePhoto;
 
     cloudinary.openUploadWidget(
       CLOUDINARY_OPTIONS,
@@ -48,14 +62,9 @@ class AlbumDetailView extends React.Component {
           // console.log("Upload succeeded in upload_photos_button.jsx");
           for (let i = 0; i < images.length; i++) {
             // prompt to add a caption
-            // LocalStorage
-            // console.log("Need to add a caption");
-            const photo = { image_url: images[i].secure_url,
-                            caption: "Need to prompt for caption (modal?)",
-                            album_id: album.id };
-            // console.log(window.sessionStorage.token);
-            // console.log(photo);
-            dataCreatePhoto(window.sessionStorage.token, photo);
+            const image_url = images[i].secure_url
+            const photo = { image_url: image_url, album_id: album.id };
+            ModalManager.open(<AddCaption onRequestClose={() => true} imageUrl={image_url} photo={photo} createPhoto={that.createPhoto.bind(that)}/>);
           }
         } else {
           // console.log("Upload failed in upload_photos_button.jsx");
