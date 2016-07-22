@@ -10,6 +10,14 @@ from django.utils import timezone
 
 from rest_framework.mixins import CreateModelMixin
 
+import json
+import codecs
+
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
+
+
 from rest_framework import viewsets
 from albums.serializers import AlbumSerializer, PhotoSerializer
 
@@ -57,7 +65,16 @@ class CreatePhoto(GenericAPIView, CreateModelMixin):
         album = Album.objects.filter(id=album_id)
         print(album)
         print(request)
-        data = request.data
+        body = request.body
+        print(body)
+
+        print("JSONified version of data")
+
+
+        # reader = codecs.getreader("utf-8")
+        # data = json.load(reader(body))
+        data = json.loads(body.decode("utf-8"))
+        # data = json.loads(body)
         print(data)
 
         caption = data["caption"]

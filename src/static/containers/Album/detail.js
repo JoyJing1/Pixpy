@@ -60,7 +60,7 @@ class AlbumDetailView extends React.Component {
                         // console.log("Need to add a caption");
                         console.log(window.sessionStorage.token);
                         console.log(photo);
-                        debugger;
+                        // debugger;
                         dataCreatePhoto(window.sessionStorage.token, photo); // Need to pass token
                         // that.props.postImage(images[i].url);
                     }
@@ -122,3 +122,65 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumDetailView);
+
+
+
+// class CreatePhoto(GenericAPIView, CreateModelMixin):
+//     print("inside CreatePhoto")
+//     authentication_classes = (JSONWebTokenAuthentication,)
+//     lookup_url_kwarg = "album_id"
+//     # serializer_class = PhotoSerializer
+//     # print(album)
+//
+//     # def perform_create(self, serializer):
+//     #     print("perform_create in albums/views.py")
+//     #     album_id = self.kwargs.get(self.lookup_url_kwarg)
+//     #     album = Album.objects.filter(id=album_id)
+//     #     serializer.save(upload_date=timezone.now(), album=album)
+//
+//     # def post(self, request, album_id):
+//     #     print("post in albums/views.py")
+//     #     self.create(request)
+//     #     print("after self.create(request)")
+//     #     serializer = PhotoSerializer(request.data)
+//     #     print(serializer)
+//     #     return Response({ "photo": serializer.data }, content_type="JSON")
+//
+//     def post(self, request, album_id):
+//         print("attempting to post photo")
+//         album_id = self.kwargs.get(self.lookup_url_kwarg)
+//         print(album_id)
+//
+//         album = Album.objects.filter(id=album_id)
+//         print(album)
+//         print('request: ')
+//         print(request)
+//         data = request.data
+//         print(data)
+//         print(request.body)
+//
+//         print('JSONified version of data')
+//         print(json.loads(data))
+//
+//         caption = data["caption"]
+//         image_url = data["image_url"]
+//         # album = data["album"]
+//         upload_date = timezone.now()
+//
+//         photo = { 'caption': caption,
+//                     'image_url': image_url,
+//                     'album': album,
+//                     'upload_date': upload_date }
+//         print(photo)
+//
+//         photo_serializer = PhotoSerializer(data=photo)
+//
+//         print(photo_serializer)
+//
+//         if photo_serializer.is_valid():
+//             photo_serializer.save()
+//             # photo_serializer.create()
+//             # self.create(request)
+//             return Response({ "photo": photo_serializer.data }, content_type="JSON")
+//             # return Response( {"photo": serializer.data }, status=status.HTTP_201_CREATED)
+//         return Response(photo_serializer.errors, status=status.HTTP_400_BAD_REQUEST)

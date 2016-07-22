@@ -84,7 +84,7 @@ export function dataCreatePhoto(token, photo) {
         return fetch(`${SERVER_URL}/api/v1/getalbums/${photo.album_id}/createphoto/`, {
             credentials: 'include',
             method: 'POST',
-            data: JSON.stringify(photo),
+            body: JSON.stringify(photo),
             headers: {
                 Accept: 'application/json',
                 Authorization: `JWT ${token}`
@@ -99,7 +99,7 @@ export function dataCreatePhoto(token, photo) {
             })
             .catch(error => {
                 console.log(error)
-                // debugger;
+                debugger;
                 if (error.response.status === 401) {
                     console.log('Got an error when trying to create photo');
                     dispatch(authLoginUserFailure(error));
