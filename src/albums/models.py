@@ -6,6 +6,7 @@ from django.utils import timezone
 class Album(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
+    # image_url = model.CharField(max_length=500)
     upload_date = models.DateTimeField('date uploaded')
 
     def __str__(self):

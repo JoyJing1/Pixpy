@@ -9,81 +9,81 @@ import { AUTH_LOGIN_USER_REQUEST, AUTH_LOGIN_USER_FAILURE, AUTH_LOGIN_USER_SUCCE
 
 
 export function authLoginUserSuccess(token) {
-    sessionStorage.setItem('token', token);
-    return {
-        type: AUTH_LOGIN_USER_SUCCESS,
-        payload: {
-            token
-        }
-    };
+  sessionStorage.setItem('token', token);
+  return {
+    type: AUTH_LOGIN_USER_SUCCESS,
+    payload: {
+      token
+    }
+  };
 }
 
 export function authLoginUserFailure(error) {
-    sessionStorage.removeItem('token');
-    return {
-        type: AUTH_LOGIN_USER_FAILURE,
-        payload: {
-            status: error.response.status,
-            statusText: error.response.statusText
-        }
-    };
+  sessionStorage.removeItem('token');
+  return {
+    type: AUTH_LOGIN_USER_FAILURE,
+    payload: {
+      status: error.response.status,
+      statusText: error.response.statusText
+    }
+  };
 }
 
 export function authLoginUserRequest() {
-    return {
-        type: AUTH_LOGIN_USER_REQUEST
-    };
+  return {
+    type: AUTH_LOGIN_USER_REQUEST
+  };
 }
 
 export function authLogout() {
-    sessionStorage.removeItem('token');
-    return {
-        type: AUTH_LOGOUT_USER
-    };
+  sessionStorage.removeItem('token');
+  return {
+    type: AUTH_LOGOUT_USER
+  };
 }
 
 export function authLogoutAndRedirect() {
-    return (dispatch, state) => {
-        dispatch(authLogout());
-        dispatch(push('/login'));
-        return Promise.resolve(); // TOOD: we need  promise here because of tests, find a better way
-    };
+  return (dispatch, state) => {
+    dispatch(authLogout());
+    dispatch(push('/login'));
+    return Promise.resolve(); // TOOD: we need  promise here because of tests, find a better way
+  };
 }
 
 export function authLoginUser(email, password, redirect = '/') {
-    return (dispatch) => {
-        dispatch(authLoginUserRequest());
-        return fetch(`${SERVER_URL}/api/v1/accounts/login/`, {
-            method: 'post',
-            credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email, password
-            })
-        })
-            .then(checkHttpStatus)
-            .then(parseJSON)
-            .then(response => {
-                try {
-                    // Validate if token is valid
-                    jwtDecode(response.token);
+  return (dispatch) => {
+    dispatch(authLoginUserRequest());
+    return fetch(`${SERVER_URL}/api/v1/accounts/login/`, {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email, password
+      })
+    })
+    .then(checkHttpStatus)
+    .then(parseJSON)
+    .then(response => {
+      try {
+        // Validate if token is valid
+        jwtDecode(response.token);
 
-                    dispatch(authLoginUserSuccess(response.token));
-                    dispatch(push(redirect));
-                } catch (e) {
-                    dispatch(authLoginUserFailure({
-                        response: {
-                            status: 403,
-                            statusText: 'Invalid token'
-                        }
-                    }));
-                }
-            })
-            .catch(error => {
-                dispatch(authLoginUserFailure(error));
-            });
-    };
+        dispatch(authLoginUserSuccess(response.token));
+        dispatch(push(redirect));
+      } catch (e) {
+        dispatch(authLoginUserFailure({
+          response: {
+            status: 403,
+            statusText: 'Invalid token'
+          }
+        }));
+      }
+    })
+    .catch(error => {
+      dispatch(authLoginUserFailure(error));
+    });
+  };
 }
