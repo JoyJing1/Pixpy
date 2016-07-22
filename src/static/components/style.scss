@@ -22,3 +22,28 @@ input[type="text"] {
   display: block;
   margin: 10px auto;
 }
+
+// PHOTO DETAIL MODAL
+
+.photo-modal {
+  // background-color: $color-silver-dark;
+}
+
+.photo-detail {
+  max-width: 70%;
+  max-height: 50%;
+  display: block;
+  margin: 25px auto 10px auto;
+}
+
+a.photo-caption {
+  text-align: center;
+  /* align-self: center; */
+  margin: 10px auto;
+  display: block;
+  color: $color-white;
+}
+
+a.photo-caption:hover {
+cursor: default;
+}

@@ -10,6 +10,7 @@ import CLOUDINARY_OPTIONS from '../../components/cloudinary_options';
 import { ModalManager } from 'react-dynamic-modal';
 
 import AddCaption from '../../components/add_caption';
+import PhotoDetail from '../../components/photo_detail';
 
 import Masonry from 'react-masonry-component';
 
@@ -40,6 +41,25 @@ class AlbumDetailView extends React.Component {
 
   openCaptionModal(image_url) {
     ModalManager.open(<AddCaption onRequestClose={() => true} imageUrl={image_url}/>);
+  }
+
+  openPhotoModal(e) {
+    e.preventDefault();
+    // console.log(this);
+    // debugger;
+    // const image_url = this.image_url;
+    // const caption = this.caption;
+    const style = { content: { background: 'black',
+                                border: "2px solid #828282",
+                                borderRadius: "10px" },
+                    overlay: { backgroundColor: 'rgba(0, 0, 0, 0.7)'}
+                  };
+
+    ModalManager.open(<PhotoDetail
+      onRequestClose={() => true}
+      imageUrl={this.image_url}
+      caption={this.caption}
+      style={style}/>);
   }
 
   createPhoto(photo) {
@@ -91,7 +111,11 @@ class AlbumDetailView extends React.Component {
           {this.props.photos.map( photo => {
             return (
               <li className="image-element-class"
-                  key={photo.id}>
+                  key={photo.id}
+                  photo={photo}
+                  imageUrl={photo.image_url}
+                  caption={photo.caption}
+                  onClick={this.openPhotoModal.bind(photo)}>
                 <img src={photo.image_url.replace("upload", "upload/c_scale,h_250")} />
               </li>
            );

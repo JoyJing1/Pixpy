@@ -103,7 +103,7 @@ export function dataCreatePhoto(token, photo) {
       if (error.response.status === 401) {
         // console.log('Got an error when trying to create photo');
         dispatch(authLoginUserFailure(error));
-        // dispatch(push('/login'));
+        dispatch(push('/login'));
       }
     });
   };

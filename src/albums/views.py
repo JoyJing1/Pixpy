@@ -35,7 +35,6 @@ class AlbumDataView(GenericAPIView):
 
         return Response({ "albums": serializer.data }, content_type="JSON")
 
-
 class AlbumDetailView(GenericAPIView):
     authentication_classes = (JSONWebTokenAuthentication,)
     lookup_url_kwarg = "album_id"
