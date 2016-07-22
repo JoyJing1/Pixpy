@@ -58,21 +58,38 @@ ul.photos-list {
 
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
+// @media (max-width: 250px) {
+//   ul.photos-list {
+//     width: 90%;
+//   }
+//
+//   .image-element-class {
+//     width: 15vw;
+//     height: 15vw;
+//   }
+// }
+
+@media (min-width: 600px) and (max-width: 800px) {
   ul.photos-list {
     width: 420px;
   }
 }
 
-@media (min-width: 900px) and (max-width: 1020px) {
+@media (min-width: 800px) and (max-width: 900px) {
   ul.photos-list {
     width: 630px;
   }
 }
 
-@media (min-width: 1020px) {
+@media (min-width: 900px) and (max-width: 1020px) {
   ul.photos-list {
     width: 840px;
+  }
+}
+
+@media (min-width: 1020px) {
+  ul.photos-list {
+    width: 1050px;
   }
 }
 
