@@ -26,13 +26,31 @@ h2, h3 {
   text-align: center;
 }
 
+h2 {
+  font-size: 45px;
+  color: $color-silver-light;
+}
+
+h3 {
+  font-size: 18px;
+  color: $color-silver-dark;
+  margin-bottom: 5px;
+}
+
 .add-photo-button {
   width: 115px;
   height: 30px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 12px;
   margin: 5px auto;
-  border: 1px solid #EEE;
+  border: 1px solid #009933;
+  background-color: $color-green-default;
+  color: $color-white;
+  font-weight: bold;
+}
+
+.add-photo-button:hover {
+  background-color: #009933;
 }
 
 ul.photos-list {
@@ -82,3 +100,5 @@ ul.photos-list {
   width: 100%;
   object-fit: cover;
 }
+
+// ADD PHOTO MODAL

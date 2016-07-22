@@ -1,0 +1,24 @@
+.photo-modal {
+  background-color: $color-silver-dark;
+}
+.new-photo {
+  max-width: 70%;
+  max-height: 50%;
+  display: block;
+  margin: 10px auto;
+  border: 1px solid $color-silver-light;
+}
+
+input[type="text"] {
+  // width: 100%;
+  border-radius: 5px;
+  border: 2px solid $color-silver-dark;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  padding: 6px;
+  width: 90%;
+  display: block;
+  margin: 10px auto;
+}

@@ -92,7 +92,7 @@ class AlbumDetailView extends React.Component {
             return (
               <li className="image-element-class"
                   key={photo.id}>
-                <img src={photo.image_url} />
+                <img src={photo.image_url.replace("upload", "upload/c_scale,h_250")} />
               </li>
            );
         })}

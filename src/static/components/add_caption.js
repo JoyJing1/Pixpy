@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Modal, ModalManager, Effect } from 'react-dynamic-modal';
 import { Button, FormControl } from 'react-bootstrap';
 
+import './style.scss';
+
 export default class MyModal extends Component{
   static propTypes = {
     body: React.PropTypes.string,
@@ -38,15 +40,15 @@ export default class MyModal extends Component{
   render() {
     const { imageUrl, onRequestClose } = this.props;
     return (
-      <Modal
+      <Modal className="photo-modal"
         onRequestClose={onRequestClose}
         effect={Effect.ScaleUp}>
 
-          <img src={imageUrl}></img>
+          <img className="new-photo" src={imageUrl}></img>
 
           <FormControl type="text"
             value={this.state.value}
-            placeholder="Add a caption for your photo!"
+            placeholder="Add a caption to your photo!"
             onChange={this.handleInputChange.bind(this)}
             onKeyDown={this.submitWithEnterKey.bind(this)}/>
       </Modal>
