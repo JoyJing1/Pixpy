@@ -69,16 +69,6 @@ class AlbumDetailView extends React.Component {
       }
     );
   }
-  // <Masonry
-  //   className={'my-gallery-class'}
-  //   elementType={'ul'}
-  //   style={masonryStyle}
-  //   options={masonryOptions}
-  //   disableImagesLoaded={false}
-  //   updateOnEachImageLoad={false}
-  //   >
-  //   {childElements}
-  // </Masonry>
 
   render() {
     const childElements = this.props.photos.map( photo => {
