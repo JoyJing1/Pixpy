@@ -7,9 +7,7 @@ export default class MyModal extends Component{
   static propTypes = {
     body: React.PropTypes.string,
     photo: React.PropTypes.object,
-    image_url: React.PropTypes.string
-    // createPhoto: React.PropTypes.function,
-    // onRequestClose: React.PropTypes.function
+    imageUrl: React.PropTypes.string
   }
 
   constructor(props) {
@@ -32,29 +30,27 @@ export default class MyModal extends Component{
   }
 
   handleSubmit() {
-    // Return value of body
     let photo = this.props.photo;
     photo.caption = this.state.body;
-    // debugger;
     this.props.createPhoto(photo);
     ModalManager.close();
   }
 
   render() {
-    const { image_url, onRequestClose } = this.props;
+    const { imageUrl, onRequestClose } = this.props;
+    console.log(imageUrl);
     return (
       <Modal
         onRequestClose={onRequestClose}
         effect={Effect.ScaleUp}>
-        <h1>THIS IS MY CAPTION MODAL</h1>
-          <img src={image_url}></img>
+
+          <img src={imageUrl}></img>
+
           <FormControl type="text"
             value={this.state.value}
-            placeholder="Enter caption here"
+            placeholder="Add a caption for your photo!"
             onChange={this.handleInputChange.bind(this)}
             onKeyDown={this.submitWithEnterKey.bind(this)}/>
-
-          <button onClick={this.handleSubmit.bind(this)}>Add Caption</button>
       </Modal>
     );
   }

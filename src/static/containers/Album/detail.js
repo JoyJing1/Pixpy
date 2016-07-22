@@ -44,7 +44,6 @@ class AlbumDetailView extends React.Component {
   }
 
   createPhoto(photo) {
-    debugger;
     const dataCreatePhoto = this.props.actions.dataCreatePhoto;
     dataCreatePhoto(window.sessionStorage.token, photo);
   }
@@ -53,7 +52,6 @@ class AlbumDetailView extends React.Component {
     e.preventDefault(e);
     const that = this;
     const album = this.props.curr_album;
-    // const dataCreatePhoto = this.props.actions.dataCreatePhoto;
 
     cloudinary.openUploadWidget(
       CLOUDINARY_OPTIONS,
@@ -61,7 +59,6 @@ class AlbumDetailView extends React.Component {
         if (error === null) {
           // console.log("Upload succeeded in upload_photos_button.jsx");
           for (let i = 0; i < images.length; i++) {
-            // prompt to add a caption
             const image_url = images[i].secure_url
             const photo = { image_url: image_url, album_id: album.id };
             ModalManager.open(<AddCaption onRequestClose={() => true} imageUrl={image_url} photo={photo} createPhoto={that.createPhoto.bind(that)}/>);
@@ -108,7 +105,6 @@ class AlbumDetailView extends React.Component {
 
 const mapStateToProps = (state) => {
   const curr_album = state.photos.curr_album ? state.photos.curr_album[0] : {};
-  // debugger;
   return {
     statusText: state.auth.statusText,
     photos: state.photos.photos,
