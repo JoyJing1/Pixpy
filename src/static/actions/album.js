@@ -55,7 +55,7 @@ export function dataFetchAlbums(token) {
       // debugger;
       if (error.response.status === 401) {
         dispatch(authLoginUserFailure(error));
-        // dispatch(push('/login'));
+        dispatch(push('/login'));
       }
     });
   };

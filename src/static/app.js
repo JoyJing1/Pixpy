@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { authLogoutAndRedirect } from './actions/auth';
 // import SideMenu from './components/SideMenu';
+import { push } from 'react-router-redux';
 import './styles/main.scss';
 
 class App extends React.Component {
@@ -44,6 +45,9 @@ class App extends React.Component {
         this.props.dispatch(authLogoutAndRedirect());
     };
 
+    toAlbumsIndex = () => {
+        this.props.dispatch(push('/albums'));
+    };
 
     //  style={{ width: this.state.containerWidth }}
     // <SideMenu pathName={this.props.pathName} dispatch={this.props.dispatch}/>
@@ -78,6 +82,16 @@ class App extends React.Component {
                         P<span>i</span>xpy
                     </Link>
                     <ul className="float-right">
+                        <li>
+                            {this.props.isAuthenticated ?
+                                <a className="js-albums-button"
+                                    onClick={this.toAlbumsIndex}>
+                                    Albums
+                                </a>
+                                :
+                                <div></div>
+                            }
+                        </li>
                         <li>
                             {this.props.isAuthenticated ?
                                 <a href="#" className="js-logout-button"
