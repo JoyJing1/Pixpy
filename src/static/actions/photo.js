@@ -78,9 +78,13 @@ export function dataCreatePhoto(token, photo) {
         console.log('about to run dispatch(dataCreatePhotoRequest()); in static/actions/photo.js');
 
         dispatch(dataCreatePhotoRequest());
-        console.log(`album_id = ${photo.album.id}`)
-        return fetch(`${SERVER_URL}/api/v1/getalbums/${photo.album.id}/createphoto`, {
+        console.log(`album_id = ${photo.album_id}`)
+        // debugger;
+        console.log(photo);
+        return fetch(`${SERVER_URL}/api/v1/getalbums/${photo.album_id}/createphoto/`, {
             credentials: 'include',
+            method: 'POST',
+            data: JSON.stringify(photo),
             headers: {
                 Accept: 'application/json',
                 Authorization: `JWT ${token}`
@@ -94,6 +98,8 @@ export function dataCreatePhoto(token, photo) {
                 dispatch(dataReceivePhotos(response));
             })
             .catch(error => {
+                console.log(error)
+                // debugger;
                 if (error.response.status === 401) {
                     console.log('Got an error when trying to create photo');
                     dispatch(authLoginUserFailure(error));

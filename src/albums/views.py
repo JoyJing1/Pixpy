@@ -10,11 +10,6 @@ from django.utils import timezone
 
 from rest_framework.mixins import CreateModelMixin
 
-# import cloudinary
-# import cloudinary.uploader
-# import cloudinary.api
-
-
 from rest_framework import viewsets
 from albums.serializers import AlbumSerializer, PhotoSerializer
 
@@ -61,11 +56,13 @@ class CreatePhoto(GenericAPIView, CreateModelMixin):
 
         album = Album.objects.filter(id=album_id)
         print(album)
+        print(request)
         data = request.data
         print(data)
 
         caption = data["caption"]
         image_url = data["image_url"]
+        # album = data["album"]
         upload_date = timezone.now()
 
         photo = { 'caption': caption,
@@ -74,11 +71,12 @@ class CreatePhoto(GenericAPIView, CreateModelMixin):
                     'upload_date': upload_date }
         print(photo)
 
-        serializer = PhotoSerializer(data=photo)
+        photo_serializer = PhotoSerializer(data=photo)
 
-        print(photo)
+        print(photo_serializer)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if photo_serializer.is_valid():
+            photo_serializer.save()
+            return Response({ "photo": photo_serializer.data }, content_type="JSON")
+            # return Response( {"photo": serializer.data }, status=status.HTTP_201_CREATED)
+        return Response(photo_serializer.errors, status=status.HTTP_400_BAD_REQUEST)

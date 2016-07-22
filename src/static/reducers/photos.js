@@ -27,6 +27,7 @@ export default createReducer(initialState, {
         // payload.photos currently undefined
         // debugger;
         // state.photos.concat(payload.photo)
+        // debugger;
         return Object.assign({}, state, {
             photos: state.photos.concat(payload.photo),
             isFetching: false
