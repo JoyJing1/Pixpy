@@ -44,6 +44,8 @@ class App extends React.Component {
         this.props.dispatch(authLogoutAndRedirect());
     };
 
+
+    //  style={{ width: this.state.containerWidth }}
     // <SideMenu pathName={this.props.pathName} dispatch={this.props.dispatch}/>
     render() {
         // only show the sidebar for authenticated users
@@ -54,7 +56,6 @@ class App extends React.Component {
                     <div className="app__sidebar">
                     </div>
                     <div className="app__content"
-                         style={{ width: this.state.containerWidth }}
                     >
                         <div className="app__content__container">
                             {this.props.children}
@@ -74,7 +75,7 @@ class App extends React.Component {
             <div className="app">
                 <nav className="app__navbar">
                     <Link className="app__navbar__title float-left" to="/">
-                        Pixpy
+                        P<span>i</span>xpy
                     </Link>
                     <ul className="float-right">
                         <li>

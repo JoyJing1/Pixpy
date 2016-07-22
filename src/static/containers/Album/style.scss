@@ -1,3 +1,122 @@
-img {
-  padding: 4px;
+/* Clearfix */
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body {
+  background-color: #141518;
+  font-family: 'Montserrat', sans-serif;
+}
+
+div.app__content {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  // vertical-align: middle;
+  justify-content: center;
+  flex-flow: column nowrap;
+  // max-width: 870px;
+  margin: 0 auto;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+.add-photo-button {
+  width: 115px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 5px auto;
+  // background: green;
+  border: 1px solid #EEE;
+}
+
+ul.photos-list {
+  // width: 90%;
+  margin: 0 auto;
+  // flex-flow: row wrap;
+  // justify-content: space-between;
+
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  // margin-top: 25px;
+  // margin-bottom: 25px;
+  // margin-left: 0px;
+  // margin-right: 10px;
+  flex-flow: row wrap;
+  // max-width: 840px;
+  width: 210px;
+
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  ul.photos-list {
+    width: 420px;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1020px) {
+  ul.photos-list {
+    width: 630px;
+  }
+}
+
+@media (min-width: 1020px) {
+  ul.photos-list {
+    width: 840px;
+  }
+}
+
+// Put on container
+// flex-flow: row wrap
+// justify-content: space-between
+
+
+.image-element-class {
+  display: block;
+  width: 200px;
+  height: 200px;
+  // height: auto;
+  min-height: 200px;
+  margin: 5px;
+
+
+
+  // LAST VERSION
+  // list-style: none;
+  // width: 200px;
+  // height: 200px;
+  // margin: 5px 0 0 5px;
+  // display: inline-block;
+  // flex: 0 0 auto;
+  // background-size: cover;
+  // vertical-align: top;
+
+  // float: left;
+  // // background: $gray-light-border;
+  // // border: 1px solid $gray-light-border;
+  // box-sizing: border-box;
+  // position: relative;
+  // display: block;
+  // height: 15vw;
+  // width: 15vw;
+  // min-width: 15vw;
+  // min-height: 15vw;
+  // width: 100%;
+}
+
+.image-element-class img {
+  height: 100%;
+  width: 100%;
+  // background-size: cover;
+  object-fit: cover;
 }

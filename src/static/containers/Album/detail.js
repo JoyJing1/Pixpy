@@ -13,7 +13,6 @@ import AddCaption from '../../components/add_caption';
 
 import Masonry from 'react-masonry-component';
 
-
 import './style.scss';
 
 const masonryOptions = {
@@ -70,6 +69,16 @@ class AlbumDetailView extends React.Component {
       }
     );
   }
+  // <Masonry
+  //   className={'my-gallery-class'}
+  //   elementType={'ul'}
+  //   style={masonryStyle}
+  //   options={masonryOptions}
+  //   disableImagesLoaded={false}
+  //   updateOnEachImageLoad={false}
+  //   >
+  //   {childElements}
+  // </Masonry>
 
   render() {
     const childElements = this.props.photos.map( photo => {
@@ -88,16 +97,16 @@ class AlbumDetailView extends React.Component {
 
         <UploadPhotosButton album={this.props.curr_album} upload={this.upload.bind(this)}/>
 
-        <Masonry
-          className={'my-gallery-class'}
-          elementType={'ul'}
-          style={masonryStyle}
-          options={masonryOptions}
-          disableImagesLoaded={false}
-          updateOnEachImageLoad={false}
-          >
-          {childElements}
-        </Masonry>
+        <ul className="photos-list">
+          {this.props.photos.map( photo => {
+            return (
+              <li className="image-element-class"
+                  key={photo.id}>
+                <img src={photo.image_url} />
+              </li>
+           );
+        })}
+      </ul>
       </div>
     );
   }

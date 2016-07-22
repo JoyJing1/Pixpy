@@ -11,3 +11,22 @@
 
 @import "utils/extra";
 @import "utils/margins";
+
+// .app__navbar {
+//   background-color: #34373C;
+// }
+
+.app .app__navbar {
+  width: 100%;
+  height: 3rem;
+  float: left;
+  background-color: #34373C;
+  // border-bottom: 0px solid #34373C;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.app .app__content {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}

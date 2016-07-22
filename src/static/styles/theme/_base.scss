@@ -13,12 +13,19 @@ html {
     width: 100%;
     height: $navbar-height;
     float: left;
-    border-bottom: 2px solid $color-green-default;
+    // border-bottom: 2px solid $color-green-default;
 
     .app__navbar__title {
       height: $navbar-height;
       line-height: $navbar-height;
       margin-left: 1rem;
+      color: white;
+      font-size: 26px;
+      font-weight: bold;
+
+      span {
+        color: $color-green-default;
+      }
     }
 
     ul {
@@ -30,7 +37,9 @@ html {
         line-height: $navbar-height;
         display: inline-block;
         padding: 0 1rem;
-        background: $color-green-default;
+        // background: $color-green-default;
+        color: $color-white;
+        // color: $color-silver-dark;
         cursor: pointer;
 
         &:hover {
@@ -40,6 +49,7 @@ html {
 
         a {
           color: $color-white;
+          // color: $color-silver-dark;
         }
       }
     }
