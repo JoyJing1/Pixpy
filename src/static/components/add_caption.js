@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
 import { Modal, ModalManager, Effect } from 'react-dynamic-modal';
 import { Button, FormControl } from 'react-bootstrap';
 
@@ -30,7 +29,7 @@ export default class MyModal extends Component{
   }
 
   handleSubmit() {
-    let photo = this.props.photo;
+    const photo = this.props.photo;
     photo.caption = this.state.body;
     this.props.createPhoto(photo);
     ModalManager.close();
@@ -38,7 +37,6 @@ export default class MyModal extends Component{
 
   render() {
     const { imageUrl, onRequestClose } = this.props;
-    console.log(imageUrl);
     return (
       <Modal
         onRequestClose={onRequestClose}

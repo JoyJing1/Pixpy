@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import logoImage from './images/react-logo.png';
 import * as actionCreators from '../../actions/album';
 
 class AlbumView extends React.Component {
@@ -14,11 +13,9 @@ class AlbumView extends React.Component {
 
   componentWillMount() {
     // console.log("containers/Album/index.js componentWillMount - about to dataFetchAlbums");
-    // {% url 'albums:detail' album.id %}
     const token = this.props.token;
     this.props.actions.dataFetchAlbums(token);
   }
-
 
   render() {
     return (

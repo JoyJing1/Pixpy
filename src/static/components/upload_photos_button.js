@@ -17,5 +17,4 @@ class UploadPhotosButton extends React.Component {
   }
 }
 
-
 export default UploadPhotosButton;
