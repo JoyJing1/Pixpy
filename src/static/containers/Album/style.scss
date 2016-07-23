@@ -91,6 +91,8 @@ ul.photos-list {
   display: block;
   width: 200px;
   height: 200px;
+  width: 200px;
+  height: 200px;
   min-height: 200px;
   margin: 5px;
 }
@@ -98,6 +100,8 @@ ul.photos-list {
 .image-element-class img {
   height: 100%;
   width: 100%;
+  // max-height: 700%;
+  // max-width: 700%;
   object-fit: cover;
 }
 
@@ -112,4 +116,14 @@ span {
 
 button.new-album {
   color: white;
+}
+
+.photo-container {
+  margin: 0 auto;
+  max-height: 50%;
+  max-width: 50%;
+}
+
+img.photo-detail {
+
 }

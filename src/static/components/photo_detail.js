@@ -19,7 +19,9 @@ export default class MyModal extends Component{
         effect={Effect.ScaleUp}
         style={style}>
 
-          <img className="photo-detail" src={imageUrl}></img>
+          <div className="photo-container">
+            <img className="photo-detail" src={imageUrl}></img>
+          </div>
           <a className="photo-caption">{caption}</a>
 
       </Modal>

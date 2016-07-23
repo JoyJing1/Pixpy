@@ -18,7 +18,9 @@ import './style.scss';
 
 const STYLE = { content: { background: 'black',
                             border: "2px solid #828282",
-                            borderRadius: "10px" },
+                            maxHeight: '70%',
+                            borderRadius: "10px",
+                            margin: "10% auto" },
                 overlay: { backgroundColor: 'rgba(0, 0, 0, 0.7)'}
               };
 
