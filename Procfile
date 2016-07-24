@@ -1,1 +1,1 @@
-web: gunicorn ./src/djangoreactredux/wsgi.py --log-file -
+web: gunicorn src.djangoreactredux.wsgi --log-file -
