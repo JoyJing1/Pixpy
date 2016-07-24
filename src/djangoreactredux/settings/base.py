@@ -60,7 +60,7 @@ ACCOUNT_ACTIVATION_DAYS = 7  # days
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static_dist'),
 )
 
 # store static files locally and serve with whitenoise
