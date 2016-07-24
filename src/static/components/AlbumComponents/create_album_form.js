@@ -1,5 +1,8 @@
 import {FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { ModalManager } from 'react-dynamic-modal';
+import { Button } from 'react-bootstrap';
 
 import './style.scss';
 
@@ -12,7 +15,6 @@ export default class CreateAlbumForm extends React.Component{
       };
     }
 
-
   getValidationState() {
     const length = this.state.title.length;
     if (length > 0)
@@ -20,7 +22,6 @@ export default class CreateAlbumForm extends React.Component{
     else
       return 'error';
     }
-
 
   handleTitleChange(e) {
     this.setState({title: e.target.value});
@@ -30,20 +31,54 @@ export default class CreateAlbumForm extends React.Component{
     this.setState({description: e.target.value});
   }
 
+  changeFocusOnEnterKey(e) {
+    if (e.keyCode === 13) {
+      ReactDOM.findDOMNode(this.refs.descriptionInput).focus();
+    }
+  }
+
+  submitWithEnterKey(e) {
+    if (e.keyCode === 13) {
+      this._handleSubmit();
+    }
+  }
+
+  _handleSubmit(){
+    this.props.createAlbum(this.props.token, this.state)
+    ModalManager.close();
+  }
+
   render() {
     return (
       <form>
-        <FormGroup controlId="formBasicText" validationState={this.getValidationState()}>
-          <ControlLabel>Title</ControlLabel>
-          <FormControl type="text" value={this.state.value} placeholder="Enter a title for the album" onChange={this.handleTitleChange.bind(this)}/>
-          <FormControl.Feedback/>
-          <HelpBlock>Required.</HelpBlock>
+        <FormGroup controlId="formBasicText"
+              validationState={this.getValidationState()}>
+          <FormControl type="text"
+                className="new-album-input"
+                value={this.state.value}
+                placeholder="Enter a title"
+                autoFocus
+                onChange={this.handleTitleChange.bind(this)}
+                onKeyDown={this.changeFocusOnEnterKey.bind(this)}/>
         </FormGroup>
         <FormGroup controlId="formBasicText">
-          <ControlLabel>Description</ControlLabel>
-          <FormControl type="text" value={this.state.value} placeholder="our super cool amazing roadtrip to Vermont" onChange={this.handleDescriptionChange.bind(this)}/>
-          <FormControl.Feedback/>
+          <FormControl type="text"
+                className="new-album-input"
+                value={this.state.value}
+                placeholder="Provide a description of your album"
+                ref="descriptionInput"
+                onChange={this.handleDescriptionChange.bind(this)}
+                onKeyDown={this.submitWithEnterKey.bind(this)}/>
         </FormGroup>
+
+        <div className="modal-footer">
+          <Button bsStyle="success"
+                className="create-album-button"
+                onClick={this._handleSubmit.bind(this)}>
+            Create
+          </Button>
+        </div>
+
       </form>
     );
   }

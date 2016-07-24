@@ -1,5 +1,5 @@
 import { dataCreateAlbum } from '../../actions/album';
-import { Modal,ModalManager,Effect} from 'react-dynamic-modal';
+import { Modal, ModalManager, Effect} from 'react-dynamic-modal';
 import CreateAlbumForm from './create_album_form';
 import { Button } from 'react-bootstrap';
 import React from 'react';
@@ -13,28 +13,22 @@ export default class CreateAlbumModal extends React.Component {
      ModalManager.close();
    }
    render(){
-      const { text,onRequestClose } = this.props;
+      const { text, onRequestClose, style, token, createAlbum } = this.props;
       return (
          <Modal
             onRequestClose={onRequestClose}
+            style={style}
             effect={Effect.ScaleUp}>
 
             <div className="modal-header">
-              <h1>Create an Album</h1>
+              <h1>New Album</h1>
             </div>
 
             <div className="modal-body">
-              <CreateAlbumForm ref="createForm"/>
+              <CreateAlbumForm ref="createForm" token={token} createAlbum={createAlbum}/>
             </div>
 
-            <div className="modal-footer">
-              <Button bsStyle="success"onClick={this._handleSubmit.bind(this)}>
-                Create
-              </Button>
-              <Button onClick={ModalManager.close}>
-                Cancel
-              </Button>
-            </div>
+
 
          </Modal>
       );

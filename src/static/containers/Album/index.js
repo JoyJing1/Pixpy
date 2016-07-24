@@ -6,6 +6,14 @@ import * as actionCreators from '../../actions/album';
 import CreateAlbumModal from '../../components/AlbumComponents/create_album_modal';
 import { ModalManager } from 'react-dynamic-modal';
 
+const STYLE = { content: { background: 'black',
+                            border: "2px solid #828282",
+                            maxHeight: '70%',
+                            borderRadius: "10px",
+                            margin: "10% auto" },
+                overlay: { backgroundColor: 'rgba(0, 0, 0, 0.7)'}
+              };
+
 class AlbumView extends React.Component {
 
     static propTypes = {
@@ -15,7 +23,11 @@ class AlbumView extends React.Component {
 
     openModal(){
       const token = this.props.token
-      ModalManager.open(<CreateAlbumModal onRequestClose={()=>true} token={token} createAlbum={this.props.actions.dataCreateAlbum.bind(this)}/>)
+      ModalManager.open(<CreateAlbumModal
+          onRequestClose={()=>true}
+          token={token}
+          style={STYLE}
+          createAlbum={this.props.actions.dataCreateAlbum.bind(this)}/>)
     }
 
     componentWillMount() {
@@ -42,7 +54,7 @@ class AlbumView extends React.Component {
                   })}
 
                 </ul>
-                <button className="new-album" onClick={this.openModal.bind(this)}> Open Create Album Modal </button>
+                <button className="new-album" onClick={this.openModal.bind(this)}>Create a New Album</button>
             </div>
         );
     }

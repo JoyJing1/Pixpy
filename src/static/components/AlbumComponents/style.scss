@@ -8,13 +8,41 @@
 
 }
 
+.form-group {
+  text-align: center;
+}
+
+input[type="text"].new-album-input {
+  border: 1px solid $color-silver-dark;
+  margin: 10px auto;
+}
+
+input[type="text"].new-album-input:focus {
+  border: 1px solid $color-silver-dark;
+  margin: 10px auto;
+}
+
 .modal-footer {
-  color: black;
+  color: $color-silver-dark;
 }
 
 // BUTTONS
 .modal-footer a {
+  // margin: 0 auto;
+}
 
+.create-album-button {
+  width: 85px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 2px auto 10px auto;
+  border: 1px solid $color-green-dark;
+  background-color: $color-green-default;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  display: block;
 }
 
 // NEW ALBUM FORM
