@@ -1,1 +1,1 @@
-web: gunicorn gettingstarted_wsgi:application --log-file -
+web: gunicorn src/djangoreactredux/wsgi:application --log-file -
