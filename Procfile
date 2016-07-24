@@ -1,1 +1,1 @@
-web: gunicorn src.gettingstarted:application --log-file -
+web: gunicorn gettingstarted:application --log-file -
