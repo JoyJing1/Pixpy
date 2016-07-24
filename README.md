@@ -52,11 +52,13 @@ The project began with a [boilerplate project][boilerplate] used for all Seedsta
 
 Pixpy is a single-page app; all content is delivered on one static page. Sensitive information is kept out of the frontend of the app. The UI is designed to be elegant and intuitive with a straightforward layout.
 
-<img src="./screenshots/login.png"/ width=400>
-
 ### Albums
 
-Users can see and create photo `Album`s from the `AlbumView` page. New albums show a default "empty album" cover photo. The first photo uploaded to an album is automatically set as the new album cover photo on the backend.
+Users can see and create photo `Album`s from the `AlbumView` page.
+
+<img src="./screenshots/new-album.png"/ width=400>
+
+New albums show a default "empty album" cover photo. The first photo uploaded to an album is automatically set as the new album cover photo on the backend.
 
 <img src="./screenshots/album-view.png"/ width=400>
 
