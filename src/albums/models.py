@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from .constants import default_image_url
-from accounts import models as account_models
+from src.accounts import models as account_models
 
 class Album(models.Model):
     title = models.CharField(max_length=200)
