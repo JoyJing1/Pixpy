@@ -55,7 +55,7 @@ h3 {
   background-color: #009933;
 }
 
-ul.photos-list {
+ul.photos-list, ul.albums-list {
   margin: 0 auto;
   padding: 0;
   display: flex;
@@ -65,31 +65,33 @@ ul.photos-list {
   width: 210px;
 }
 
+// RESIZE IMAGES LIST BASED ON DEVICE WIDTH
+
 @media (min-width: 600px) and (max-width: 800px) {
-  ul.photos-list {
+  ul.photos-list, ul.albums-list {
     width: 420px;
   }
 }
 
 @media (min-width: 800px) and (max-width: 900px) {
-  ul.photos-list {
+  ul.photos-list, ul.albums-list {
     width: 630px;
   }
 }
 
 @media (min-width: 900px) and (max-width: 1020px) {
-  ul.photos-list {
+  ul.photos-list, ul.albums-list {
     width: 840px;
   }
 }
 
 @media (min-width: 1020px) {
-  ul.photos-list {
+  ul.photos-list, ul.albums-list {
     width: 1050px;
   }
 }
 
-.image-element-class {
+.image-element-class, .album-image-container {
   display: block;
   width: 200px;
   height: 200px;
@@ -136,6 +138,27 @@ button.new-album-button {
   max-width: 50%;
 }
 
-img.photo-detail {
+li.album-item {
+  display: inline-block;
 
+  h4 {
+    margin-top: 15px;
+  }
+}
+
+li.album-item:hover {
+  h4 {
+    color: $color-green-default;
+  }
+}
+
+div.album-image-container {
+  text-align: center;
+  display: inline-block;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

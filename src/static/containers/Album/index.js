@@ -48,12 +48,15 @@ class AlbumView extends React.Component {
                         >New Album
                 </button>
 
-              <ul>
+              <ul className="albums-list">
                   {this.props.albums.map(album => {
                       return (
                         <li key={album.id} className="album-item">
                           <Link to={`albums/${album.id}`}>
-                            {album.title}
+                            <h4>{album.title}</h4>
+                            <div className="album-image-container">
+                              <img src={album.image_url}></img>
+                            </div>
                           </Link>
                         </li>
                       );
