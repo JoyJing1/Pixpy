@@ -15,8 +15,9 @@ import codecs
 
 from rest_framework import viewsets
 from albums.serializers import AlbumSerializer, PhotoSerializer
-
+from .constants import default_image_url
 from .models import Album, Photo
+
 
 class AlbumDataView(GenericAPIView, CreateModelMixin):
     authentication_classes = (JSONWebTokenAuthentication,)
@@ -24,8 +25,7 @@ class AlbumDataView(GenericAPIView, CreateModelMixin):
     serializer_class = AlbumSerializer
 
     def perform_create(self, serializer):
-        serializer.save(upload_date=timezone.now())
-        # Response({"album": serializer.data}, content_type="JSON")
+        serializer.save(upload_date=timezone.now(), user=self.request.user)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -34,14 +34,12 @@ class AlbumDataView(GenericAPIView, CreateModelMixin):
         headers = self.get_success_headers(serializer.data)
         return Response({"album": serializer.data}, status=status.HTTP_201_CREATED, headers=headers)
 
-
-
     def get(self, request):
         print("inside AlbumDataView.get()")
         queryset = self.get_queryset()
         serializer = AlbumSerializer(queryset, many=True)
 
-        return Response({ "albums": serializer.data }, content_type="JSON")
+        return Response({"albums": serializer.data}, content_type="JSON")
 
     def post(self, request):
         print("inside AlbumDataView.post()")
@@ -63,7 +61,9 @@ class AlbumDetailView(GenericAPIView):
         album = Album.objects.filter(id=album_id)
         album_serializer = AlbumSerializer(album, many=True)
 
-        return Response({ "curr_album": album_serializer.data, "photos": photo_serializer.data }, content_type="JSON")
+        return Response({ "curr_album": album_serializer.data,
+                          "photos": photo_serializer.data },
+                        content_type="JSON")
 
 
 class CreatePhoto(GenericAPIView, CreateModelMixin):
@@ -73,28 +73,35 @@ class CreatePhoto(GenericAPIView, CreateModelMixin):
 
     def post(self, request, album_id):
         # print("attempting to post photo")
+
         album_id = self.kwargs.get(self.lookup_url_kwarg)
         album = Album.objects.filter(id=album_id)
+        if request.user.id != album[0].user.id:
+            return Response({"statusText": "Only album owners can add photos"},
+                            status=status.HTTP_403_FORBIDDEN)
 
         body = request.body
         data = json.loads(body.decode("utf-8"))
 
         caption = data["caption"]
         image_url = data["image_url"]
+
+        if album[0].image_url == default_image_url:
+            album.update(image_url = image_url)
         upload_date = timezone.now()
 
         # Update album's cover image if doesn't exist
         # Check whether url is default
         # album.image_url = image_url
 
-        photo = { 'caption': caption,
-                    'image_url': image_url,
-                    'album': album,
-                    'upload_date': upload_date }
+        photo = {'caption': caption,
+                 'image_url': image_url,
+                 'album': album,
+                 'upload_date': upload_date}
 
         photo_serializer = PhotoSerializer(data=photo)
 
         if photo_serializer.is_valid():
             photo_serializer.save()
-            return Response({ "photo": photo_serializer.data }, content_type="JSON")
+            return Response({"photo": photo_serializer.data}, content_type="JSON")
         return Response(photo_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
