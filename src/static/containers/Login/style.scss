@@ -23,3 +23,19 @@ a {
 input.form-control.input-lg {
   width: 100%;
 }
+
+.small-6.small-centered.columns.login-form-container {
+  width: 55%;
+}
+
+.alert.alert__success {
+  color: $color-silver-dark;
+  background-color: transparent;
+  border: 1px solid $color-silver-dark;
+}
+
+.alert {
+  border-radius: 8px;
+  padding: 5px;
+  text-align: center;
+}

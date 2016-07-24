@@ -60,7 +60,7 @@ class LoginView extends React.Component {
       return (
           <div className="container">
               <div className="row margin-top-large">
-                  <div className="small-6 small-centered columns">
+                  <div className="small-6 small-centered columns login-form-container">
                       <div className="row">
                           <div className="small-12 columns">
                               <h1>P<span>i</span>xpy: P<span>i</span>cs in Py</h1>
