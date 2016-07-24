@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-import { dataCreatePhoto } from '../actions/photo';
+import { dataCreatePhoto } from '../../actions/photo';
 // import * as actionCreators from '../actions/photo';
 // import * as actionCreators from '../../actions/photo';
 import CLOUDINARY_OPTIONS from './cloudinary_options';

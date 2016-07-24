@@ -5,12 +5,12 @@ import { bindActionCreators } from 'redux';
 import * as actionCreators from '../../actions/photo';
 // import { dataFetchPhotos, dataCreatePhoto } from '../../actions/photo';
 // import { dataCreatePhoto } from '../../actions/photo';
-import UploadPhotosButton from '../../components/upload_photos_button';
-import CLOUDINARY_OPTIONS from '../../components/cloudinary_options';
+import UploadPhotosButton from '../../components/PhotoComponents/upload_photos_button';
+import CLOUDINARY_OPTIONS from '../../components/PhotoComponents/cloudinary_options';
 import { ModalManager } from 'react-dynamic-modal';
 
-import AddCaption from '../../components/add_caption';
-import PhotoDetail from '../../components/photo_detail';
+import AddCaption from '../../components/PhotoComponents/add_caption';
+import PhotoDetail from '../../components/PhotoComponents/photo_detail';
 
 // import Masonry from 'react-masonry-component';
 
