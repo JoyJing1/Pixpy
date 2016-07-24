@@ -41,8 +41,14 @@ class AlbumView extends React.Component {
         return (
             <div className="container">
                 <h2>P<span>i</span>xpy P<span>i</span>cs</h2>
-                <h3>Explore all albums on Pixpy, a Django/Redux photo-sharing app</h3>
-                <ul>
+                <h3>Explore Pixpy, a Django/Redux photo-sharing app developed by <a href="https://github.com/joyjing1">Joy Jing</a> and <a href="https://github.com/corleyma">Matt Corley</a></h3>
+
+                <button className="new-album-button"
+                        onClick={this.openModal.bind(this)}
+                        >New Album
+                </button>
+
+              <ul>
                   {this.props.albums.map(album => {
                       return (
                         <li key={album.id} className="album-item">
@@ -52,9 +58,8 @@ class AlbumView extends React.Component {
                         </li>
                       );
                   })}
-
                 </ul>
-                <button className="new-album" onClick={this.openModal.bind(this)}>Create a New Album</button>
+
             </div>
         );
     }

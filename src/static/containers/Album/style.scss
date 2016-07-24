@@ -34,7 +34,9 @@ h2 {
 h3 {
   font-size: 18px;
   color: $color-silver-dark;
-  margin-bottom: 5px;
+  max-width: 600px;
+  margin: 0 auto 5px auto;
+  // margin-bottom: 5px;
 }
 
 .add-photo-button {
@@ -114,8 +116,18 @@ span {
   color: $color-green-default;
 }
 
-button.new-album {
-  color: white;
+button.new-album-button {
+  width: 101px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 2px auto 10px auto;
+  border: 1px solid $color-green-dark;
+  background-color: $color-green-default;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  display: block;
 }
 
 .photo-container {
