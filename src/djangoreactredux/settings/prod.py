@@ -23,10 +23,7 @@ DATABASES = {
 
 # ########### Sentry configuration
 
-# Change this to proper sentry url.
-RAVEN_CONFIG = {
-    'dsn': 'http://7d20e5babb164e70ab478cd6f75232e9:76bac262b8894d4db4448b33dad78f0d@sentry.seedstars.com/3',
-}
+
 
 INSTALLED_APPS = INSTALLED_APPS + (  # NOQA (ignore all errors on this line)
     'raven.contrib.django.raven_compat',
