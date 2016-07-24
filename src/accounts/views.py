@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django_rest_logger import log
+# from django_rest_logger import log
 from rest_framework import status, parsers, renderers
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import CreateModelMixin
@@ -9,9 +9,9 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework_jwt.serializers import JSONWebTokenSerializer
 from rest_framework_jwt.utils import jwt_response_payload_handler
 
-from accounts.models import User
-from accounts.serializers import UserRegistrationSerializer
-from lib.utils import AtomicMixin
+from src.accounts.models import User
+from src.accounts.serializers import UserRegistrationSerializer
+from src.lib.utils import AtomicMixin
 
 
 class UserRegisterView(AtomicMixin, CreateModelMixin, GenericAPIView):

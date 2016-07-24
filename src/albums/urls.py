@@ -4,7 +4,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.views.decorators.csrf import csrf_exempt
 
-from albums import views
+from src.albums import views
 
 router = routers.DefaultRouter()
 

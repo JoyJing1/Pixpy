@@ -14,7 +14,7 @@ import json
 import codecs
 
 from rest_framework import viewsets
-from albums.serializers import AlbumSerializer, PhotoSerializer
+from src.albums.serializers import AlbumSerializer, PhotoSerializer
 from .constants import default_image_url
 from .models import Album, Photo
 
