@@ -15,7 +15,7 @@ const TARGET = process.env.npm_lifecycle_event;
 
 const PATHS = {
     app: path.join(__dirname, '../src/static'),
-    build: path.join(__dirname, '../src/static_dist'),
+    build: path.join(__dirname, '../src/static'),
 };
 
 const VENDOR = [
