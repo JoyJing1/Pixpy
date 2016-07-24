@@ -1,8 +1,14 @@
-# Django React/Redux Base Project
+# Pixpy
 
-This repository includes a boilerplate project used for all Seedstars Labs applications. It uses Django as backend and React as frontend. 
+[Pixpy live][live]
 
-We build on the solders of giants with the following technologies:
+[live]: http://www.pixpy.tech/
+
+Pixpy is a full-stack photo-sharing web application. It utilizes Django on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
+
+The project began with a [boilerplate project][boilerplate] used for all Seedstars Labs applications. We build on the shoulders of giants with the following technologies:
+
+[boilerplate]: https://github.com/Seedstars/django-react-redux-jwt-base
 
 **Frontend**
 
@@ -40,96 +46,36 @@ We build on the solders of giants with the following technologies:
 * [Mock](http://www.voidspace.org.uk/python/mock/) mocking and testing Library
 * [Responses](https://github.com/getsentry/responses) a utility for mocking out the Python Requests library
 
+## Features & Implementation
 
-## Readme Notes
+### Single-Page App
 
-* Command line starts with $, the command should run with user privileges
-* Command line starts with #, the command should run with root privileges
+Pixpy is a single-page app; all content is delivered on one static page. Sensitive information is kept out of the frontend of the app. The UI is designed to be elegant and intuitive with a straightforward layout.
 
-## Retrieve code 
+<img src="./screenshots/login.png"/ width=400>
 
-* `$ git clone https://github.com/Seedstars/django-react-redux-jwt-base.git`
-* `$ cd django-react-redux-jwt-base`
-* `$ git submodule init`
-* `$ git submodule update`
-* `$ ./scripts/get_static_validation.sh`
+### Albums
 
-Remember that when you copy this repository for a new project you need to add the scripts external module using:
+Users can see and create photo `Album`s from the `AlbumView` page. New albums show a default "empty album" cover photo. The first photo uploaded to an album is automatically set as the new album cover photo on the backend.
 
-* `$ git submodule add https://github.com/Seedstars/culture-scripts scripts`
+<img src="./screenshots/album-view.png"/ width=400>
 
-## Installation
+When a new album is created, the user is immediately directed to the `AlbumDetailView` where they can upload photos to the album. All albums belong to a user via `user_id`. Only the user who initially created an album can upload photos to that album.
 
-### NODEJS
+<img src="./screenshots/album-detail.png"/ width=400>
 
-* `# wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -`
-* `# apt-get install --yes nodejs`
+### Photos
 
-Make sure npm version is 3.x
-* `$ npm -v`
-* `$ npm install -g npm@next` # only if version is lower than 3.x
+Users can see and add `Photo`s from the `AlbumDetailView`. Photos are hosted on Cloudinary, and hold a foreign key to the `album_id` they belong to. When a photo is uploaded, a modal pops up displaying the photo and asks for an optional `caption`. Focus is automatically placed on the caption input field, which can be submitted either using the Enter key or by clicking the return button.
 
-### Main Project
+<img src="./screenshots/add-caption.png"/ width=400>
 
-* `$ npm install`
-* `$ npm run dev`  # will run webpack with watch and compile code as it changes
+From the `AlbumDetailView`, when a user clicks on a photo, it opens in a modal displaying both the image and caption. Clicking anywhere off of the modal closes the modal.
 
-* `$ virtualenv -p /usr/bin/python3 virtualenv`
-* `$ source virtualenv/bin/activate`
-* `$ pip install -r py-requirements/dev.txt`
+<img src="./screenshots/photo-detail.png"/ width=400>
 
-* `$ cd src`
-* `$ python manage.py migrate`
-* `$ python manage.py loaddata fixtures.json`
-* `$ python manage.py runserver`
+Users can browse and view all albums and photos, but can only add photos to their albums. This restriction is reinforced both on the frontend (the button is not displayed) as well as the backend (the photo will not be saved if the current user is not the creator of the album).
 
-## Running
+### User Authentication
 
-Run webpack in development mode
-
-* `$ npm run dev` 
-
-Run Django development http server 
-
-* `$ cd src`
-* `$ python manage.py runserver`
-
-## Testing
-
-Frontend (javascript tests)
-
-* `$ ./scripts/test_local_frontend.sh`
-
-Backend (django/python tests)
-
-* `$ ./scripts/test_local_backend.sh`
-
-
-### Static analysis
-
-To make sure the code respects all coding guidelines you should run the statics analysis script before pushing any code.
-
-
-Frontend (javascript static analysis)
-
-* `$ ./scripts/static_validate_frontend.sh`
-
-Backend (django/python static analysis)
-
-* `$ ./scripts/static_validate_backend.sh`
-
-### Screenshots
-
-Here are some screenshots of the boilerplate project.
-
-![Screenshot01][1]  
-
-[1]: https://raw.githubusercontent.com/Seedstars/django-react-redux-jwt-base/master/screenshots/screenshot_01.png
-
-![Screenshot02][2]  
-
-[2]: https://raw.githubusercontent.com/Seedstars/django-react-redux-jwt-base/master/screenshots/screenshot_02.png
-
-![Screenshot03][3]  
-
-[3]: https://raw.githubusercontent.com/Seedstars/django-react-redux-jwt-base/master/screenshots/screenshot_03.png
+<img src="./screenshots/login.png"/ width=400>
