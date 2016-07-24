@@ -79,29 +79,29 @@ class App extends React.Component {
                     <Link className="app__navbar__title float-left" to="/">
                         P<span>i</span>xpy
                     </Link>
-                    <ul className="float-right">
-                        <li>
-                            {this.props.isAuthenticated ?
-                                <a className="js-albums-button"
-                                    onClick={this.toAlbumsIndex}>
-                                    Albums
-                                </a>
-                                :
-                                <div></div>
-                            }
-                        </li>
-                        <li>
-                            {this.props.isAuthenticated ?
-                                <a href="#" className="js-logout-button"
-                                   onClick={this.logout}
-                                >
-                                    Logout
-                                </a>
-                                :
-                                <Link className="js-login-button" to="/login">Login</Link>
-                            }
-                        </li>
-                    </ul>
+                      {this.props.isAuthenticated ?
+                        <ul className="float-right">
+                          <li>
+                            <a className="js-albums-button"
+                                onClick={this.toAlbumsIndex}>
+                              Albums
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" className="js-logout-button"
+                              onClick={this.logout}
+                              >
+                              Logout
+                            </a>
+                          </li>
+                        </ul>
+                        :
+                        <ul className="float-right">
+                          <li>
+                            <Link className="js-login-button" to="/login">Login</Link>
+                          </li>
+                        </ul>
+                      }
                 </nav>
 
                 {bodyContent}

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/auth';
 import classNames from 'classnames';
 
+import './style.scss';
+
 class LoginView extends React.Component {
 
   static propTypes = {
@@ -61,7 +63,8 @@ class LoginView extends React.Component {
                   <div className="small-6 small-centered columns">
                       <div className="row">
                           <div className="small-12 columns">
-                              <h1>Log in to view protected content!</h1>
+                              <h1>P<span>i</span>xpy: P<span>i</span>cs in Py</h1>
+                              <h4>A Django/Redux photo-sharing app developed by <a href="https://github.com/joyjing1">Joy Jing</a> and <a href="https://github.com/corleyma">Matt Corley</a>.</h4>
                           </div>
                       </div>
                       <div className="row margin-top-medium">
