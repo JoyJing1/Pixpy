@@ -42,9 +42,9 @@ MIDDLEWARE_CLASSES = (
     'whitenoise.middleware.WhiteNoiseMiddleware'
 )
 
-ROOT_URLCONF = 'djangoreactredux.urls'
+ROOT_URLCONF = 'src.djangoreactredux.urls'
 
-WSGI_APPLICATION = 'djangoreactredux.wsgi.application'
+WSGI_APPLICATION = 'src.djangoreactredux.wsgi.application'
 
 LANGUAGE_CODE = 'en-us'
 
