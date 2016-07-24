@@ -29,9 +29,9 @@ INSTALLED_APPS = (
     'django_extensions',
     'rest_framework_jwt',
 
-    'accounts',
-    'base',
-    'albums'
+    'src.accounts',
+    'src.base',
+    'src.albums'
 )
 
 MIDDLEWARE_CLASSES = (
