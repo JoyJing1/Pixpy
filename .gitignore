@@ -39,7 +39,3 @@ shippable/
 
 # not include scripts because they come from external module
 scripts/
-
-/src/static/components/cloudinary_options.js
-*cloudinary.js
-*cloudinary*
