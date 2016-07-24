@@ -132,3 +132,7 @@ if (TARGET === 'dev' || !TARGET) {
 if (TARGET === 'prod' || !TARGET) {
     module.exports = merge(production, common);
 }
+
+if (TARGET === 'postinstall' || !TARGET) {
+    module.exports = merge(production, common);
+}
