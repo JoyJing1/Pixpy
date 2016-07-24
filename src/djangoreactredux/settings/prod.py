@@ -1,6 +1,7 @@
 import os
 
 from djangoreactredux.settings.base import *  # NOQA (ignore all errors on this line)
+import dj_database_url
 
 
 DEBUG = False
@@ -81,3 +82,6 @@ DEFAULT_LOGGER = 'raven'
 LOGGER_EXCEPTION = DEFAULT_LOGGER
 LOGGER_ERROR = DEFAULT_LOGGER
 LOGGER_WARNING = DEFAULT_LOGGER
+
+dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
