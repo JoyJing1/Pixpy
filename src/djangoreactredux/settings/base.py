@@ -20,7 +20,6 @@ ALLOWED_HOSTS = ['']
 # Application definition
 
 INSTALLED_APPS = (
-    'albums.apps.AlbumsConfig',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,7 +30,8 @@ INSTALLED_APPS = (
     'rest_framework_jwt',
 
     'accounts',
-    'base'
+    'base',
+    'albums'
 )
 
 MIDDLEWARE_CLASSES = (
