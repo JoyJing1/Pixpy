@@ -11,8 +11,7 @@
 
 virtualenv/
 htmlcov/
-src/static_dist/
-src/static_root/
+
 
 # Python compiled byte code
 *.pyc
