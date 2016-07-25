@@ -1,10 +1,6 @@
 from django_seed import Seed
 from django.conf import settings
 import datetime
-# import unicodedata
-# import copy
-# import factory
-# from faker import Factory as FakerFactory
 import os
 import seed_imgs
 
@@ -46,7 +42,7 @@ for img_url in seed_imgs.FLOWERS:
 
 Album.objects.create(
     title = 'Pandas',
-    description = 'Pigs are both the smartest as well as one of the cutest mammals around',
+    description = "He's a panda! You're a panda! What are you gonna do, big guy? Sit on me?",
     image_url = seed_imgs.PANDAS[0],
     upload_date = datetime.datetime.now()
 )
@@ -64,8 +60,8 @@ for img_url in seed_imgs.PANDAS:
 #       CHICKS     ###############################################################
 
 Album.objects.create(
-    title = 'Piglets and Piggies',
-    description = 'Pigs are both the smartest as well as one of the cutest mammals around',
+    title = 'Chicks',
+    description = "The closest living relatives of the T. Rex.  Aren't they fearsome?",
     image_url = seed_imgs.CHICKS[0],
     upload_date = datetime.datetime.now()
 )
@@ -83,8 +79,8 @@ for img_url in seed_imgs.CHICKS:
 #       CATS     ###############################################################
 
 Album.objects.create(
-    title = 'Piglets and Piggies',
-    description = 'Pigs are both the smartest as well as one of the cutest mammals around',
+    title = 'Kitties and Kats',
+    description = 'It is a very inconvenient habit of kittens that whatever you say to them, they always purr.',
     image_url = seed_imgs.CATS[0],
     upload_date = datetime.datetime.now()
 )
@@ -102,8 +98,8 @@ for img_url in seed_imgs.CATS:
 #       DOGS     ###############################################################
 
 Album.objects.create(
-    title = 'Piglets and Piggies',
-    description = 'Pigs are both the smartest as well as one of the cutest mammals around',
+    title = "Dog Days",
+    description = 'Every dog has his day, unless he loses his tail, then he has a weak-end.',
     image_url = seed_imgs.DOGS[0],
     upload_date = datetime.datetime.now()
 )
@@ -121,8 +117,8 @@ for img_url in seed_imgs.DOGS:
 #       PENGUINS        ###############################################################
 
 Album.objects.create(
-    title = 'Piglets and Piggies',
-    description = 'Pigs are both the smartest as well as one of the cutest mammals around',
+    title = 'Penguins',
+    description = "It's pretty much impossible to look at a penguin and be mad.",
     image_url = seed_imgs.PENGUINS[0],
     upload_date = datetime.datetime.now()
 )
@@ -140,7 +136,7 @@ for img_url in seed_imgs.PENGUINS:
 #       PIGS        ####################################################
 Album.objects.create(
     title = 'Piglets and Piggies',
-    description = 'Pigs are both the smartest as well as one of the cutest mammals around',
+    description = 'You have been my friend. That in itself is a tremendous thing. I wove my webs for you because I liked you.',
     image_url = seed_imgs.PIGS[0],
     upload_date = datetime.datetime.now()
 )
@@ -157,8 +153,8 @@ for img_url in seed_imgs.PIGS:
 
 #       BIRDS        ####################################################
 Album.objects.create(
-    title = 'Piglets and Piggies',
-    description = 'Pigs are both the smartest as well as one of the cutest mammals around',
+    title = 'Birds of a Feather',
+    description = "The reason birds can fly and we can't is simply because they have perfect faith, for to have faith is to have wings.",
     image_url = seed_imgs.BIRDS[0],
     upload_date = datetime.datetime.now()
 )
@@ -176,8 +172,7 @@ for img_url in seed_imgs.BIRDS:
 #       RABBITS        ####################################################
 Album.objects.create(
     title = 'Bunnies',
-    description = "I have always wanted a bunny and I'll always have a rabbit the rest of my life.
-Read more at: http://www.brainyquote.com/quotes/keywords/bunny.html",
+    description = "I have always wanted a bunny and I'll always have a rabbit for the rest of my life.",
     image_url = seed_imgs.RABBITS[0],
     upload_date = datetime.datetime.now()
 )
@@ -230,7 +225,7 @@ for img_url in seed_imgs.SCUBA:
 #       SNOW        ####################################################
 Album.objects.create(
     title = 'Snow Sports',
-    description = 'Skiing and snowboarding are pretty fun, but telemark skiing is the BEST!!',
+    description = 'Snowboarding is an activity that is very popular with people who do not feel that regular skiing is lethal enough.',
     image_url = seed_imgs.SNOW[0],
     upload_date = datetime.datetime.now()
 )
@@ -248,7 +243,7 @@ for img_url in seed_imgs.SNOW:
 #       SURFING        ####################################################
 Album.objects.create(
     title = "Surf's Up!",
-    description = "I've always wanted to learn to surf! Hopefully now that I'm on the west coast, I'll be able to find an opportunity to do so.",
+    description = "Wiping out is an underappreciated skill.",
     image_url = seed_imgs.SURFING[0],
     upload_date = datetime.datetime.now()
 )
@@ -266,7 +261,7 @@ for img_url in seed_imgs.SURFING:
 #       BEACH        ####################################################
 Album.objects.create(
     title = 'Beach Vacation',
-    description = 'Zanzibar has some of the best beaches in the world',
+    description = 'The sun shines everywhere, not just at the beach.',
     image_url = seed_imgs.BEACH[0],
     upload_date = datetime.datetime.now()
 )

@@ -5,5 +5,5 @@ const CLOUDINARY_OPTIONS = {
     client_allowed_formats: ['png', 'gif', 'jpeg'],
     sources: ['local', 'url']
 };
-// ​
+
 export default CLOUDINARY_OPTIONS;
