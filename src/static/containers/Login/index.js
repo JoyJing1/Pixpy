@@ -26,6 +26,33 @@ class LoginView extends React.Component {
     };
   }
 
+  login_demo = (e) => {
+    e.preventDefault();
+    this.setState( { email: "", password: "" } );
+
+    const email = "alan.schaaf@imgur.com";
+    const password = "safestpassword";
+    let delay = 0;
+
+    for (let i = 0; i < email.length; i++) {
+      window.setTimeout( () => {
+        this.setState( { email: email.substring(0, i+1) } );
+      }, delay );
+      delay += 150
+    }
+
+    for (let j = 0; j < password.length; j++) {
+      window.setTimeout( () => {
+        this.setState( { password: password.substring(0, j+1) } );
+      }, delay );
+      delay += 150;
+    }
+
+    window.setTimeout( () => {
+      this.props.actions.authLoginUser(this.state.email, this.state.password, this.state.redirectTo);
+    }, delay += 100);
+  };
+
   login = (e) => {
     e.preventDefault();
     this.props.actions.authLoginUser(this.state.email, this.state.password, this.state.redirectTo);
@@ -67,11 +94,6 @@ class LoginView extends React.Component {
                               <h4>A Django/Redux photo-sharing app developed by <a href="https://github.com/joyjing1">Joy Jing</a> and <a href="https://github.com/corleyma">Matt Corley</a>.</h4>
                           </div>
                       </div>
-                      <div className="row margin-top-medium">
-                          <div className="small-12 columns">
-                              <p>Hint: a@a.com / qw</p>
-                          </div>
-                      </div>
 
                       {statusText}
 
@@ -79,6 +101,7 @@ class LoginView extends React.Component {
                           <div className="row margin-top-small">
                               <div className="small-12 columns">
                                   <input type="text"
+                                         value={this.state.email}
                                          className="form-control input-lg"
                                          placeholder="Email"
                                          onChange={(e) => { this.handleInputChange(e, 'email'); }}
@@ -88,6 +111,7 @@ class LoginView extends React.Component {
                           <div className="row margin-top-small">
                               <div className="small-12 columns">
                                   <input type="password"
+                                         value={this.state.password}
                                          className="form-control input-lg"
                                          placeholder="Password"
                                          onChange={(e) => { this.handleInputChange(e, 'password'); }}
@@ -97,11 +121,11 @@ class LoginView extends React.Component {
                           <div className="row margin-top-small">
                               <div className="small-12 columns">
                                   <button type="submit"
-                                          className="button button-medium float-right"
+                                          className="button button-medium float-right login-button"
                                           disabled={this.props.isAuthenticating}
-                                          onClick={this.login}
+                                          onClick={this.login_demo}
                                   >
-                                      Submit
+                                      Demo
                                   </button>
                               </div>
                           </div>

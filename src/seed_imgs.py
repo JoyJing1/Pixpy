@@ -93,6 +93,7 @@ MEN = [
 ##    BACKGROUNDS   ##
 
 BACKGROUNDS = [
+  "http://res.cloudinary.com/joyjing1/image/upload/v1469467656/894_1_o1a7285_golden_gate_bridge_s035kl.jpg",
   "https://res.cloudinary.com/joyjing1/image/upload/v1467339505/backgrounds/Lakes.jpg", "https://res.cloudinary.com/joyjing1/image/upload/v1467339268/backgrounds/panorama-sali2000.jpg",
   "https://res.cloudinary.com/joyjing1/image/upload/v1467339250/backgrounds/_DSC1434.jpg",
   "https://res.cloudinary.com/joyjing1/image/upload/v1467339241/backgrounds/_DSC0320.jpg",

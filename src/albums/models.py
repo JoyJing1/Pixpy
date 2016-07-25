@@ -16,6 +16,11 @@ class Album(models.Model):
                              on_delete=models.CASCADE,
                              related_name="user")
 
+    user = models.ForeignKey(account_models.User,
+                    on_delete=models.CASCADE,
+                    related_name="user",
+                    default=account_models.User.objects.last())
+
     def __str__(self):
         return self.title
 
