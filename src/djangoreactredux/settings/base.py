@@ -18,7 +18,6 @@ ALLOWED_HOSTS = ['']
 # Application definition
 
 INSTALLED_APPS = (
-    'albums.apps.AlbumsConfig',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,8 +28,9 @@ INSTALLED_APPS = (
     'rest_framework_jwt',
     'django_seed',
 
-    'accounts',
-    'base'
+    'src.accounts',
+    'src.base',
+    'src.albums'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -40,9 +40,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware'
 )
 
-ROOT_URLCONF = 'djangoreactredux.urls'
+ROOT_URLCONF = 'src.djangoreactredux.urls'
 
-WSGI_APPLICATION = 'djangoreactredux.wsgi.application'
+WSGI_APPLICATION = 'src.djangoreactredux.wsgi.application'
 
 LANGUAGE_CODE = 'en-us'
 

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Django, React, Redux, and JWT!",
   "scripts": {
+    "postinstall": "webpack --progress --config webpack/common.config.js",
     "dev": "webpack --progress --display-error-details --config webpack/common.config.js --watch",
     "prod": "webpack --progress --config webpack/common.config.js",
     "mocha": "mocha --require tests/require --recursive --compilers js:babel-core/register tests/js",

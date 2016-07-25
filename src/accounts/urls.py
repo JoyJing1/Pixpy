@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.utils.translation import ugettext_lazy as _
 
-from accounts import views as account_views
+from src.accounts import views as account_views
 
 urlpatterns = [
     url(_(r'^register/$'), account_views.UserRegisterView.as_view(), name='register'),
