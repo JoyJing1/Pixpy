@@ -44,3 +44,18 @@ input.form-control.input-lg:focus {
   padding: 5px;
   text-align: center;
 }
+
+button.button.button-medium.float-right.login-button {
+  width: 75px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 2px auto 0 auto;
+  border: 1px solid $color-green-dark;
+  background-color: $color-green-default;
+  color: $white;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  padding: 0;
+}

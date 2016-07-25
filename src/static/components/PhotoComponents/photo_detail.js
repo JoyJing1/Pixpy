@@ -20,7 +20,7 @@ export default class MyModal extends Component{
         style={style}>
 
           <div className="photo-container">
-            <img className="photo-detail" src={imageUrl}></img>
+            <img className="photo-detail" src={imageUrl.replace("upload", "upload/c_scale/w_400")}></img>
           </div>
           <a className="photo-caption">{caption}</a>
 

@@ -36,7 +36,6 @@ class LoginView extends React.Component {
 
     for (let i = 0; i < email.length; i++) {
       window.setTimeout( () => {
-        // console.log(email.substring(0, i+1));
         this.setState( { email: email.substring(0, i+1) } );
       }, delay );
       delay += 150
@@ -50,11 +49,8 @@ class LoginView extends React.Component {
     }
 
     window.setTimeout( () => {
-      // console.log(this.state);
       this.props.actions.authLoginUser(this.state.email, this.state.password, this.state.redirectTo);
     }, delay += 100);
-    // this.props.actions.authLoginUser(this.state.email, this.state.password, this.state.redirectTo);
-    // this.login();
   };
 
   login = (e) => {
@@ -125,7 +121,7 @@ class LoginView extends React.Component {
                           <div className="row margin-top-small">
                               <div className="small-12 columns">
                                   <button type="submit"
-                                          className="button button-medium float-right"
+                                          className="button button-medium float-right login-button"
                                           disabled={this.props.isAuthenticating}
                                           onClick={this.login_demo}
                                   >
