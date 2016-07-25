@@ -19,7 +19,9 @@ confirmed_email = "alan.schaaf@imgur.com",
 date_joined = datetime.datetime.strptime("2009-02-23", "%Y-%M-%d")
 )
 
-User.objects.last().set_password("safestpassword").save()
+u = User.objects.last()
+u.set_password("safestpassword")
+u.save()
 
 #       FLOWERS     ###############################################################
 
