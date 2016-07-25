@@ -372,6 +372,7 @@ FAMILIES = [
 ]
 
 PANDAS = [
+  "http://res.cloudinary.com/joyjing1/image/upload/v1468365265/friendex_imgs/wobzuxduy9f5r4jkobow.jpg",
   "http://res.cloudinary.com/joyjing1/image/upload/v1467687702/friendex_imgs/n0cnskhnw4j71hrcf35o.jpg",
   "http://res.cloudinary.com/joyjing1/image/upload/v1468108838/images_bhq8z4.jpg",
   "http://res.cloudinary.com/joyjing1/image/upload/v1468108835/sold__handmade_poseable_baby_panda__glummy_bear__by_wood_splitter_lee-d964mvo_m09hyi.jpg",
@@ -385,8 +386,7 @@ PANDAS = [
   "http://res.cloudinary.com/joyjing1/image/upload/v1468108795/Panda_Cub_from_Wolong__Sichuan__China_s1epni.jpg",
   "http://res.cloudinary.com/joyjing1/image/upload/v1468108793/four-pandas-ss-1920_hyvtka.jpg",
   "http://res.cloudinary.com/joyjing1/image/upload/v1469202140/friendex_imgs/u2sptnqza1rx1mgzyh5p.jpg",
-  "http://res.cloudinary.com/joyjing1/image/upload/v1468365333/friendex_imgs/l6hrrtlckmv32l0snb4x.jpg",
-  "http://res.cloudinary.com/joyjing1/image/upload/v1468365265/friendex_imgs/wobzuxduy9f5r4jkobow.jpg"
+  "http://res.cloudinary.com/joyjing1/image/upload/v1468365333/friendex_imgs/l6hrrtlckmv32l0snb4x.jpg"
 ]
 
 FLOWERS = [
