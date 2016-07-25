@@ -22,6 +22,11 @@ a {
 
 input.form-control.input-lg {
   width: 100%;
+  background: white;
+}
+
+input.form-control.input-lg:focus {
+  background: white;
 }
 
 .small-6.small-centered.columns.login-form-container {

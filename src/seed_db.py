@@ -1,23 +1,25 @@
 from django_seed import Seed
-from django.conf import settings
 import datetime
 import os
 import seed_imgs
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-DEBUG = False
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite'),  # NOQA (ignore all errors on this line)
-    }
-}
-
-settings.configure(DATABASES=DATABASES, DEBUG=DEBUG)
-
 from albums.models import Album, Photo
+from accounts.models import User
 
 seeder = Seed.seeder()
+
+#       DEMO User       #######################################
+
+User.objects.create(
+first_name = "Alan",
+last_name = "Schaaf",
+email = "alan.schaaf@imgur.com",
+gender = "M",
+confirmed_email = "alan.schaaf@imgur.com",
+date_joined = datetime.datetime.strptime("2009-02-23", "%Y-%M-%d")
+)
+
+User.objects.last().set_password("safestpassword").save()
 
 #       FLOWERS     ###############################################################
 
