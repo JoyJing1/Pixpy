@@ -38,6 +38,8 @@ class AlbumDataView(GenericAPIView, CreateModelMixin):
         print("inside AlbumDataView.get()")
         queryset = self.get_queryset()
         serializer = AlbumSerializer(queryset, many=True)
+        
+        print(serializer.data)
 
         return Response({"albums": serializer.data}, content_type="JSON")
 

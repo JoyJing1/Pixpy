@@ -72,6 +72,12 @@ class AlbumDetailView extends React.Component {
     dataCreatePhoto(window.sessionStorage.token, photo);
   }
 
+  displayUploadButton() {
+    if (this.props.userName === this.props.curr_album.user) {
+      return <UploadPhotosButton album={this.props.curr_album} upload={this.upload.bind(this)}/>
+    }
+  }
+
   upload(e) {
     e.preventDefault(e);
     const that = this;
@@ -114,7 +120,7 @@ class AlbumDetailView extends React.Component {
         <h2>{this.props.curr_album.title}</h2>
         <h3>{this.props.curr_album.description}</h3>
 
-        <UploadPhotosButton album={this.props.curr_album} upload={this.upload.bind(this)}/>
+        {this.displayUploadButton()}
 
         <ul className="photos-list">
           {this.props.photos.map( photo => {
@@ -140,7 +146,8 @@ const mapStateToProps = (state) => {
   return {
     statusText: state.auth.statusText,
     photos: state.photos.photos,
-    curr_album: curr_album
+    curr_album: curr_album,
+    userName: state.auth.userName
   };
 };
 

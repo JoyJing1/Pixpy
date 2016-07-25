@@ -10,6 +10,7 @@ django-disposable-email-checker==1.2.1
 django-extensions==1.6.1
 djangorestframework==3.3.2
 djangorestframework-jwt==1.7.2
+django_seed
 docopt==0.6.2
 dodgy==0.1.9
 execnet==1.4.1
