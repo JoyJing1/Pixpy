@@ -143,6 +143,11 @@ li.album-item {
 
   h4 {
     margin-top: 15px;
+    text-overflow: ellipsis;
+    height: 24px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
 
