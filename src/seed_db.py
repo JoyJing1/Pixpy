@@ -3,8 +3,12 @@ from django.conf import settings
 import datetime
 import os
 import seed_imgs
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+
 DEBUG = False
 DATABASES = {
     'default': {
@@ -13,6 +17,7 @@ DATABASES = {
     }
 }
 
+DATABASES['default'].update(db_from_env)
 settings.configure(DATABASES=DATABASES, DEBUG=DEBUG)
 
 from albums.models import Album, Photo
