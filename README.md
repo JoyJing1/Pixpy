@@ -4,9 +4,9 @@
 
 [live]: http://www.pixpy.tech/
 
-Pixpy is a full-stack photo-sharing web application. It utilizes Django on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
+Pixpy is a full-stack photo-sharing web application. It utilizes Django + Django REST Framework for the backend Web API, a PostgreSQL database, and React.js with a Redux architecture on the frontend.
 
-The project began with a [boilerplate project][boilerplate] used for all Seedstars Labs applications. We build on the shoulders of giants with the following technologies:
+The project began with a [boilerplate project][boilerplate]  We build on the shoulders of giants with the following technologies:
 
 [boilerplate]: https://github.com/Seedstars/django-react-redux-jwt-base
 
@@ -18,21 +18,14 @@ The project began with a [boilerplate project][boilerplate] used for all Seedsta
 * [Babel](http://babeljs.io) for ES6 and ES7 magic
 * [Webpack](http://webpack.github.io) for bundling
 * [Webpack Dev Middleware](http://webpack.github.io/docs/webpack-dev-middleware.html)
-* [Redux](https://github.com/rackt/redux)'s futuristic [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
+* [Redux](https://github.com/rackt/redux)'s [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
 * [Redux Dev Tools](https://github.com/rackt/redux-devtools) for next generation DX (developer experience). Watch [Dan Abramov's talk](https://www.youtube.com/watch?v=xsSnOQynTHs)
 * [Redux Thunk](https://github.com/gaearon/redux-thunk) Thunk middleware for Redux - used in async actions
 * [React Router Redux](https://github.com/rackt/react-router-redux) Ruthlessly simple bindings to keep react-router and redux in sync
 * [fetch](https://github.com/github/fetch) A window.fetch JavaScript polyfill
 * [style-loader](https://github.com/webpack/style-loader), [sass-loader](https://github.com/jtangelder/sass-loader) and [less-loader](https://github.com/webpack/less-loader) to allow import of stylesheets in plain css, sass and less,
-* [font-awesome-webpack](https://github.com/gowravshekar/font-awesome-webpack) to customize FontAwesome
-* [foundation-sites](https://github.com/zurb/foundation-sites) for the grid
-* [ESLint](http://eslint.org), [Airbnb Javascript/React Styleguide](https://github.com/airbnb/javascript), [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css) to maintain a consistent code style and [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) to make sure all imports are correct
-* [mocha](https://mochajs.org/) to allow writing unit tests for the project
-* [Enzyme](http://airbnb.io/enzyme/) JavaScript Testing utilities for React
-* [redux-mock-store](https://github.com/arnaudbenard/redux-mock-store) a mock store for your testing your redux async action creators and middleware
-* [expect](https://github.com/mjackson/expect) Write better assertions
-* [Nock](https://github.com/pgte/nock) HTTP mocking and expectations library
-* [istanbul](https://github.com/gotwarlost/istanbul) to generate coverage when running mocha
+* [font-awesome-webpack](https://github.com/gowravshekar/font-awesome-webpack) to customize FontAwesome, and
+* [ESLint](http://eslint.org), [Airbnb Javascript/React Styleguide](https://github.com/airbnb/javascript), [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css) to maintain a consistent code style
 
 **Backend**
 
@@ -40,17 +33,12 @@ The project began with a [boilerplate project][boilerplate] used for all Seedsta
 * [Django REST framework](http://www.django-rest-framework.org/) Django REST framework is a powerful and flexible toolkit for building Web APIs
 * [Django REST framework JSON Web Token](http://getblimp.github.io/django-rest-framework-jwt/) JSON Web Token Authentication support for Django REST Framework
 * [WhiteNoise](http://whitenoise.evans.io/en/latest/django.html) to serve files efficiently from Django
-* [Prospector](http://prospector.landscape.io/en/master/) a complete Python static analysis tool
-* [Bandit](https://github.com/openstack/bandit) a security linter from OpenStack Security
-* [pytest](http://pytest.org/latest/) a mature full-featured Python testing tool
-* [Mock](http://www.voidspace.org.uk/python/mock/) mocking and testing Library
-* [Responses](https://github.com/getsentry/responses) a utility for mocking out the Python Requests library
 
 ## Features & Implementation
 
 ### Single-Page App
 
-Pixpy is a single-page app; all content is delivered on one static page. Sensitive information is kept out of the frontend of the app. The UI is designed to be elegant and intuitive with a straightforward layout.
+Pixpy is a single-page app; all content is delivered on one static page. The UI is designed to be elegant and intuitive with a straightforward layout.
 
 ### Albums
 
@@ -81,3 +69,9 @@ Users can browse and view all albums and photos, but can only add photos to thei
 ### User Authentication
 
 <img src="./screenshots/login.png"/ width=400>
+
+Pixpy uses a JSON Web Token (JWT) authentication scheme.  JWTs are a compact, self-contained mechanism for securely transmitting information between parties as digitally signed JSON objects.
+
+When a user successfully logs in using her credentials, a JSON Web Token will be returned and persisted to local storage.  This token is then passed in the `Authorization` header of all HTTP requests against protected resources.  
+
+Because the token is "self-contained", we are able to write stateless APIs on the backend--after validating the JWT signature, user information is read from the token and protected resources are served appropriately.
