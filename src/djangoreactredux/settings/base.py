@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_extensions',
     'rest_framework_jwt',
+    'django_seed',
 
     'accounts',
     'base'
