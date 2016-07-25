@@ -6,9 +6,7 @@
 
 Pixpy is a full-stack photo-sharing web application. It utilizes Django + Django REST Framework for the backend Web API, a PostgreSQL database, and React.js with a Redux architecture on the frontend.
 
-The project began with a [boilerplate project][boilerplate]  We build on the shoulders of giants with the following technologies:
-
-[boilerplate]: https://github.com/Seedstars/django-react-redux-jwt-base
+The following is a (not necessarily exhaustive) enumeration of the technologies we build upon:
 
 **Frontend**
 
