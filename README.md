@@ -73,3 +73,5 @@ Pixpy uses a JSON Web Token (JWT) authentication scheme.  JWTs are a compact, se
 When a user successfully logs in using her credentials, a JSON Web Token will be returned and persisted to local storage.  This token is then passed in the `Authorization` header of all HTTP requests against protected resources.  
 
 Because the token is "self-contained", we are able to write stateless APIs on the backend--after validating the JWT signature, user information is read from the token and protected resources are served appropriately.
+
+<img src="./screenshots/logged-out.png"/ width=400>
