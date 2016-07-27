@@ -107,11 +107,11 @@ ul.photos-list, ul.albums-list {
   object-fit: cover;
 }
 
-.grow {
+li.grow {
   transition: all .1s ease-in-out;
 }
 
-.grow:hover {
+li.grow:hover {
   transform: scale(1.1);
   z-index: 1;
   cursor: pointer;
