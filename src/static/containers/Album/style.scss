@@ -104,9 +104,17 @@ ul.photos-list, ul.albums-list {
 .image-element-class img {
   height: 100%;
   width: 100%;
-  // max-height: 700%;
-  // max-width: 700%;
   object-fit: cover;
+}
+
+.grow {
+  transition: all .1s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.1);
+  z-index: 1;
+  cursor: pointer;
 }
 
 // ALBUM INDEX PAGE

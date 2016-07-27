@@ -108,7 +108,7 @@ class AlbumDetailView extends React.Component {
   render() {
     const childElements = this.props.photos.map( photo => {
       return (
-        <li className="image-element-class"
+        <li className="image-element-class grow"
           key={photo.id}>
           <img src={photo.image_url} />
         </li>
